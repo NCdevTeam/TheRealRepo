@@ -12,13 +12,18 @@
 <html>
 <head>
     <title>HomePage</title>
+    <style type="text/css">
+        table, th, td {
+            border: 1px solid rgba(47, 60, 229, 0.66);
+        }
+    </style>
 </head>
 <body>
 <div>
     <h3>Here comes the header!</h3>
 </div>
 <div>
-    <c:if test="${!empty tempBook}">
+    <c:if test="${tempBook != null}">
         <table>
             <tr>
                 <th>Author</th>
