@@ -1,9 +1,9 @@
-package main.java.util.interfaces;
+package main.java.DAO;
 
 /**
  * Created by dR34m3r on 09.04.2017.
  */
-import main.java.pojo.Author;
+import main.java.entities.Author;
 
 import java.util.Collection;
 import java.sql.SQLException;

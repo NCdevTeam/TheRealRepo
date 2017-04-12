@@ -1,4 +1,4 @@
-package main.java.DAO;
+package main.java.DAO.Implementations;
 
 /**
  * Created by dR34m3r on 09.04.2017.
@@ -8,18 +8,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import main.java.DAO.AuthorDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import main.java.pojo.Author;
-import main.java.util.interfaces.AuthorDAO;
+import main.java.entities.Author;
 
 @Repository
 @Transactional
-public class AuthorDAOImpl implements AuthorDAO{
+public class AuthorDAOImpl implements AuthorDAO {
 
     @Autowired
     SessionFactory sessionFactory;

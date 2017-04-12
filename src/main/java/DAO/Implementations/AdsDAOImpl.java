@@ -1,4 +1,4 @@
-package main.java.DAO;
+package main.java.DAO.Implementations;
 
 /**
  * Created by dR34m3r on 08.04.2017.
@@ -8,20 +8,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import main.java.DAO.AdsDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import main.java.pojo.Ad;
-import main.java.util.interfaces.AdsDAO;
-import main.java.pojo.Book;
-import main.java.pojo.User;
+import main.java.entities.Ad;
+import main.java.entities.Book;
+import main.java.entities.User;
 
 @Repository
 @Transactional
-public class AdsDAOImpl implements AdsDAO{
+public class AdsDAOImpl implements AdsDAO {
 
     @Autowired
     SessionFactory sessionFactory;

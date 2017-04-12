@@ -1,4 +1,4 @@
-package main.java.DAO;
+package main.java.DAO.Implementations;
 
 /**
  * Created by dR34m3r on 09.04.2017.
@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import main.java.util.interfaces.AttachmentsDAO;
-import main.java.pojo.Attachment;
-import main.java.pojo.Ad;
+import main.java.DAO.AttachmentsDAO;
+import main.java.entities.Attachment;
+import main.java.entities.Ad;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

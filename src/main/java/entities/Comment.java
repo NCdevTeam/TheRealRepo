@@ -1,8 +1,8 @@
-package main.java.pojo;
+package main.java.entities;
 
 import javax.persistence.*;
 
-import main.java.util.enums.noteType;
+import main.java.entities.enums.noteType;
 
 import java.util.Date;
 

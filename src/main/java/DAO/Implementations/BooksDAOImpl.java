@@ -1,4 +1,4 @@
-package main.java.DAO;
+package main.java.DAO.Implementations;
 
 /**
  * Created by dR34m3r on 09.04.2017.
@@ -10,21 +10,19 @@ import java.util.Collection;
 import java.util.List;
 
 
-
+import main.java.DAO.BooksDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import main.java.util.interfaces.BooksDAO;
-import main.java.pojo.Book;
-import main.java.pojo.Author;
+import main.java.entities.Book;
+import main.java.entities.Author;
 
 @Repository
 @Transactional
-public class BooksDAOImpl implements BooksDAO{
+public class BooksDAOImpl implements BooksDAO {
 
     @Autowired
     SessionFactory sessionFactory;

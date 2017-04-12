@@ -1,6 +1,6 @@
-package main.java.pojo;
+package main.java.entities;
 
-import main.java.util.enums.userStatus;
+import main.java.entities.enums.userStatus;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

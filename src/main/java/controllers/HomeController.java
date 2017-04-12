@@ -1,9 +1,9 @@
 package main.java.controllers;
 
-//import org.library.pojo.Book;
+//import org.library.entities.Book;
 //import org.library.services.BookService;
 
-import main.java.pojo.Book;
+import main.java.entities.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

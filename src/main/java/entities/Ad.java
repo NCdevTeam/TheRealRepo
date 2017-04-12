@@ -1,7 +1,7 @@
-package main.java.pojo;
+package main.java.entities;
 
-import main.java.util.enums.adStatus;
-import main.java.util.enums.adType;
+import main.java.entities.enums.adStatus;
+import main.java.entities.enums.adType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

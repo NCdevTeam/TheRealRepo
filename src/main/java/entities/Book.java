@@ -1,10 +1,9 @@
-package main.java.pojo;
+package main.java.entities;
 
 /**
  * Created by Владислав on 01.04.2017.
  */
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

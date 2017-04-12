@@ -1,7 +1,7 @@
-package main.java.util.interfaces;
+package main.java.DAO;
 
-import main.java.pojo.Ad;
-import main.java.pojo.Attachment;
+import main.java.entities.Ad;
+import main.java.entities.Attachment;
 
 import java.sql.SQLException;
 import java.util.Collection;

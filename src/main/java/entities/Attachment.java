@@ -1,6 +1,4 @@
-package main.java.pojo;
-
-import java.io.Serializable;
+package main.java.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

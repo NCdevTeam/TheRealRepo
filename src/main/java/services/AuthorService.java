@@ -4,16 +4,14 @@ package main.java.services;
  * Created by dR34m3r on 09.04.2017.
  */
 
-import main.java.pojo.Author;
+import main.java.entities.Author;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Collection;
-import main.java.util.interfaces.AuthorDAO;
+
+import main.java.DAO.AuthorDAO;
 
 @Service
 @Transactional
