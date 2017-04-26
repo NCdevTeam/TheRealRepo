@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 import main.java.DAO.UsersDAO;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,12 +73,13 @@ public class UsersDAOImpl implements UsersDAO {
         return user;
     }
 
-    public Collection getAllUsers() throws SQLException{
+    public List<User> getAllUsers() throws SQLException{
         Session session = null;
         List users = new ArrayList<User>();
         try {
             session = sessionFactory.openSession();
-            users = session.createSQLQuery("select * from user").list();
+            Query query = session.createQuery("From User");
+            users = query.list();
         } catch (Exception e) {
 
         } finally {

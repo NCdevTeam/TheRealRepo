@@ -11,6 +11,7 @@ import java.util.List;
 
 
 import main.java.DAO.BooksDAO;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,12 +76,14 @@ public class BooksDAOImpl implements BooksDAO {
         return book;
     }
 
-    public Collection getAllBooks() throws SQLException {
+    public List<Book> getAllBooks() throws SQLException {
         Session session = null;
-        List books = new ArrayList<Book>();
+        List<Book> books = new ArrayList<Book>();
         try {
             session = sessionFactory.openSession();
-            books = session.createSQLQuery("Select * from books").list();
+            Query query = session.createQuery("From Book");
+            books = query.list();
+            //books = (List<Book>)session.createSQLQuery("Select * from books").addEntity(Book.class).list();
         } catch (Exception e) {
 
         } finally {
@@ -107,13 +110,16 @@ public class BooksDAOImpl implements BooksDAO {
         }
     }
 
-    public Collection getBooksByAuthor(Author author) throws SQLException {
+    public List<Book> getBooksByAuthorId(Integer authorId) throws SQLException {
         Session session = null;
         List books = new ArrayList<Book>();
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            books = session.createSQLQuery("select * from books where books.authorID = " + author.getId()).list();
+            Query query = session.createQuery("from Book as bk where bk.authorID = :parameterId");
+            query.setParameter("parameterId",authorId);
+            books = query.list();
+            //books = session.createSQLQuery("select * from books where books.authorID = " + author.getId()).list();
             session.getTransaction().commit();
 
         } catch (Exception e ) {

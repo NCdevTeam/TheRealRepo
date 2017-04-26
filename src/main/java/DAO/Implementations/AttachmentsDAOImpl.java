@@ -12,6 +12,7 @@ import main.java.DAO.AttachmentsDAO;
 import main.java.entities.Attachment;
 import main.java.entities.Ad;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,14 +74,15 @@ public class AttachmentsDAOImpl implements AttachmentsDAO {
         return attachment;
     }
 
-    public Collection getAttachmentsByAd(Ad advert) throws SQLException {
+    public List<Attachment> getAttachmentsByAdId(Integer advertId) throws SQLException {
         Session session = null;
-        List attachments = new ArrayList<Attachment>();
+        List<Attachment> attachments = new ArrayList<Attachment>();
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            attachments = session.createSQLQuery("Select * from attachments where attachments.adsID = "
-                                                    + advert.getId()).list();
+            Query query = session.createQuery("From Attachment as at where at.adsId = :parameterId");
+            query.setParameter("parameterId",advertId);
+            attachments = query.list();
             session.getTransaction().commit();
         } catch (Exception e) {
 

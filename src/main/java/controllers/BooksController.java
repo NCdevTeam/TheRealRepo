@@ -7,6 +7,7 @@ import main.java.entities.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,30 +20,26 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/books")
-public class HomeController {
+public class BooksController {
 
     @Autowired private BookService bookService;
-    @Autowired private AuthorService authorService;
 
-    @RequestMapping(method=RequestMethod.GET, value="/all")
-    public ModelAndView home(ModelMap map) throws SQLException{
-        List<Book> tempBook = bookService.getAll();
-        //Book tempBook = bookService.getBook(3);
-        map.addAttribute("tempBook",tempBook);
+    @RequestMapping(method=RequestMethod.GET, value="/")
+    public ModelAndView allBooks(ModelMap map) throws SQLException{
+        map.addAttribute("tempBook",bookService.getAll());
         return new ModelAndView("allBooksDisplay");
     }
 
+    @RequestMapping(method=RequestMethod.GET, value="/author/{id}")
+    public ModelAndView allBooksByAuthorId(ModelMap map, @PathVariable("id") Integer id) throws SQLException{
+        map.addAttribute("tempBook",bookService.getBooksByAuthorId(id));
+        return new ModelAndView("allAuthorsBooksDisplay");
+    }
 
-//    @Resource(name="BookService")
-//    private BookService bookService;
-//
-//    @RequestMapping(value = "/home", method = RequestMethod.GET)
-//    public String getBooks(Model model) {
-//
-//        List<Book> books = bookService.getAll();
-//
-//        return "home";
-//    }
-
+    @RequestMapping(method=RequestMethod.GET, value="/{id}")
+    public ModelAndView BookById(ModelMap map, @PathVariable("id") Integer id) throws SQLException{
+        map.addAttribute("tempBook",bookService.getBook(id));
+        return new ModelAndView("BookDisplay");
+    }
 
 }

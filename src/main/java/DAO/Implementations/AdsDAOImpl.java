@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 import main.java.DAO.AdsDAO;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,12 +75,13 @@ public class AdsDAOImpl implements AdsDAO {
         return advert;
     }
 
-    public Collection getAllAds() throws SQLException {
+    public List<Ad> getAllAds() throws SQLException {
         Session session = null;
-        List ads = new ArrayList<Ad>();
+        List<Ad> ads = new ArrayList<Ad>();
         try {
             session = sessionFactory.openSession();
-            ads = session.createSQLQuery("select * from ads").list();
+            Query query = session.createQuery("From Ad");
+            ads = query.list();
         } catch (Exception e ) {
 
         }finally {
@@ -106,13 +108,15 @@ public class AdsDAOImpl implements AdsDAO {
         }
     }
 
-    public Collection getAdsByUser(User user) throws SQLException {
+    public List<Ad> getAdsByUserId(Integer userId) throws SQLException {
         Session session = null;
-        List ads = new ArrayList<Ad>();
+        List<Ad> ads = new ArrayList<Ad>();
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            ads = session.createSQLQuery("select * from ads where ads.userID = " + user.getId()).list();
+            Query query = session.createQuery("From Ad where Ad.userId = :parameterId");
+            query.setParameter("parameterId",userId);
+            ads = query.list();
             session.getTransaction().commit();
         } catch (Exception e) {
 
@@ -124,13 +128,14 @@ public class AdsDAOImpl implements AdsDAO {
         return ads;
     }
 
-    public Collection getAdsByBook(Book book) throws SQLException {
+    public List<Ad> getAdsByBookId(Integer bookId) throws SQLException {
         Session session = null;
-        List ads = new ArrayList<Ad>();
+        List<Ad> ads = new ArrayList<Ad>();
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            ads = session.createSQLQuery("Select * from ads where ads.bookID = " + book.getId()).list();
+            Query query = session.createQuery("From Ad where Ad.bookId = :parameterId");
+            query.setParameter("parameterId",bookId);
             session.getTransaction().commit();
         } catch (Exception e ) {} finally {
             if (session != null && session.isOpen()) {

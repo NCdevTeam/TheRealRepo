@@ -8,12 +8,13 @@ import main.java.entities.Author;
 
 import java.util.Collection;
 import java.sql.SQLException;
+import java.util.List;
 
 public interface BooksDAO {
     public void addBook(Book book) throws SQLException;
     public void updateBook(Book book, Integer bookId) throws SQLException;
     public Book getBookById(Integer bookId) throws SQLException;
-    public Collection getAllBooks() throws SQLException;
+    public List<Book> getAllBooks() throws SQLException;
     public void deleteBook(Book book) throws SQLException;
-    public Collection getBooksByAuthor(Author author) throws SQLException;
+    public List<Book> getBooksByAuthorId(Integer authorId) throws SQLException;
 }

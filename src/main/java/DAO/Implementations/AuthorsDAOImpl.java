@@ -5,10 +5,9 @@ package main.java.DAO.Implementations;
  */
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-import main.java.DAO.AuthorDAO;
+import main.java.DAO.AuthorsDAO;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,7 +19,7 @@ import main.java.entities.Author;
 
 @Repository
 @Transactional
-public class AuthorDAOImpl implements AuthorDAO {
+public class AuthorsDAOImpl implements AuthorsDAO {
 
     @Autowired
     SessionFactory sessionFactory;
