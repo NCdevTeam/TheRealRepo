@@ -13,20 +13,23 @@ import org.springframework.web.servlet.ModelAndView;
 import main.java.services.*;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Controller
+@RequestMapping("/books")
 public class HomeController {
 
     @Autowired private BookService bookService;
     @Autowired private AuthorService authorService;
 
-    @RequestMapping(method=RequestMethod.GET, value="/")
-    public ModelAndView index(ModelMap map) throws SQLException{
-        Book temp = bookService.getBook(3);
-        map.addAttribute("tempBook",temp);
-        map.addAttribute("authorOfTempBook",authorService.getAuthorById(temp.getAuthorID()));
-
-        return new ModelAndView("home");
+    @RequestMapping(method=RequestMethod.GET, value="/all")
+    public ModelAndView home(ModelMap map) throws SQLException{
+        List<Book> tempBook = bookService.getAll();
+        //Book tempBook = bookService.getBook(3);
+        map.addAttribute("tempBook",tempBook);
+        return new ModelAndView("allBooksDisplay");
     }
 
 

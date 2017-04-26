@@ -7,11 +7,12 @@ import main.java.entities.Author;
 
 import java.util.Collection;
 import java.sql.SQLException;
+import java.util.List;
 
 public interface AuthorDAO {
     public void addAuthor(Author author) throws SQLException;
     public void updateAuthor(Author author) throws SQLException;
     public Author getAuthorById(Integer authorId) throws SQLException;
     public void deleteAuthor(Author author) throws SQLException;
-    public Collection getAllAuthors() throws SQLException;
+    public List<Author> getAllAuthors() throws SQLException;
 }

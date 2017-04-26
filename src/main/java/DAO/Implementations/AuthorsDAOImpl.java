@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 import main.java.DAO.AuthorDAO;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,12 +89,13 @@ public class AuthorDAOImpl implements AuthorDAO {
         }
     }
 
-    public Collection getAllAuthors() throws SQLException{
+    public List<Author> getAllAuthors() throws SQLException{
         Session session = null;
         List authors = new ArrayList<Author>();
         try {
             session = sessionFactory.openSession();
-            authors = session.createSQLQuery("select * from author").list();
+            Query query = session.createQuery("From Author ");
+            authors = query.list();
         } catch (Exception e ){
 
         } finally {
