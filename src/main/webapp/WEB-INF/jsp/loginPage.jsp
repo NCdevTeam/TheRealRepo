@@ -8,12 +8,13 @@
 --%>
 
 <%@include file="header.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <body>
-    <c:url value="/log" var="LoginProcessingUrl" />
+    <c:url value="../login" var="LoginProcessingUrl" />
 <form action ="${loginProcessingUrl}" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <fieldset>
-        <legend> Please LogIn</legend>
+        <legend> Пожалуйста, войдите </legend>
         <c:if test="${param.error != null}">
             <div>
                 Failed to login.
@@ -28,19 +29,19 @@
             </div>
         </c:if>
         <p>
-            <label for="username">Username</label>
+            <label for="username">Имя пользователя</label>
             <input type="text" id="username" name="username" />
         </p>
         <p>
-            <label for="password">Password</label>
+            <label for="password">Пароль</label>
             <input type="password" id="password" name="password"/>
         </p>
         <p>
-            <label for="remember-me">Remember me?</label>
+            <label for="remember-me">Запомнить меня?</label>
             <input type="checkbox" id="remember-me" name="remember-me"/>
         </p>
         <div>
-            <button type="submit" class="btn">Log in</button>
+            <button type="submit" class="btn">Войти</button>
         </div>
     </fieldset>
 </form>

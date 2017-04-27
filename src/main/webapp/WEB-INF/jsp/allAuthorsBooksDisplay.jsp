@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@include file="header.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <body>
 <h2>All Books By author ${tempBook.get(0).authorID}</h2>
 
@@ -18,7 +19,7 @@
     <c:forEach items="${tempBook}" var="bk">
         <tr>
             <td>${bk.id}</td>
-            <td>${bk.name}</td>
+            <td><a href="/books/${bk.id}">${bk.name}</a></td>
             <td>${bk.description}</td>
         </tr>
     </c:forEach>
