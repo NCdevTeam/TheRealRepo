@@ -24,21 +24,24 @@ public class BooksController {
 
     @Autowired private BookService bookService;
 
-    @RequestMapping(method=RequestMethod.GET, value="/")
+    @RequestMapping(method=RequestMethod.GET)
     public ModelAndView allBooks(ModelMap map) throws SQLException{
         map.addAttribute("tempBook",bookService.getAll());
+        map.addAttribute("title","Список всех книг.");
         return new ModelAndView("allBooksDisplay");
     }
 
     @RequestMapping(method=RequestMethod.GET, value="/author/{id}")
     public ModelAndView allBooksByAuthorId(ModelMap map, @PathVariable("id") Integer id) throws SQLException{
         map.addAttribute("tempBook",bookService.getBooksByAuthorId(id));
+        map.addAttribute("title","Книги автора");
         return new ModelAndView("allAuthorsBooksDisplay");
     }
 
     @RequestMapping(method=RequestMethod.GET, value="/{id}")
     public ModelAndView BookById(ModelMap map, @PathVariable("id") Integer id) throws SQLException{
         map.addAttribute("tempBook",bookService.getBook(id));
+        map.addAttribute("title","Паспорт книги");
         return new ModelAndView("BookDisplay");
     }
 

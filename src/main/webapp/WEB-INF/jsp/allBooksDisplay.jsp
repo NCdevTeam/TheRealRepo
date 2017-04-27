@@ -5,14 +5,7 @@
   Time: 21:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<html>
-<head>
-    <title>Spring MVC Hello World</title>
-</head>
-
+<%@include file="header.jsp"%>
 <body>
 <h2>All Books in System</h2>
 
