@@ -22,11 +22,11 @@ public class User {
     @GeneratedValue
     private Integer id;
 
-    @Column(name = "login")
-    private String login;
+    @Column(name = "username")
+    private String username;
 
-    @Column(name = "passHash")
-    private String passHash;
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "email")
     private String email;
@@ -51,11 +51,11 @@ public class User {
     }
 
     public String getLogin() {
-        return login;
+        return username;
     }
 
     public String getPassHash() {
-        return passHash;
+        return password;
     }
 
     public String getEmail() {
@@ -84,12 +84,12 @@ public class User {
         this.id = id;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setLogin(String username) {
+        this.username = username;
     }
 
     public void setPassHash(String password) {
-        this.passHash = password;
+        this.password = password;
     }
 
     public void setEmail(String email) {
