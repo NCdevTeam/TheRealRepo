@@ -28,7 +28,7 @@ public class BookServiceImpl implements BookService{
         return booksDAO.getBookById(Id);
     }
 
-    public List<Book> getBooksByAuthorId(Integer authorId) throws SQLException{
-        return booksDAO.getBooksByAuthorId(authorId);
+    public List<Book> getBooksByAuthor(Author author) throws SQLException{
+        return booksDAO.getBooksByAuthor(author);
     }
 }

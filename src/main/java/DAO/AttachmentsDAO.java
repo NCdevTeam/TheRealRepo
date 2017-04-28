@@ -13,9 +13,9 @@ import java.util.List;
 public interface AttachmentsDAO {
 
     public void addAttachment(Attachment attachment) throws SQLException;
-    public void updateAttachment(Attachment attachment,Integer attachmentId) throws SQLException;
+    public void updateAttachment(Attachment attachment) throws SQLException;
     public Attachment getAttachmentById(Integer attachmentId) throws SQLException;
-    public List<Attachment> getAttachmentsByAdId(Integer AdId) throws SQLException;
+    public List<Attachment> getAttachmentsByAd(Ad ad) throws SQLException;
     public void deleteAttachment(Attachment attachment) throws SQLException;
 
 }

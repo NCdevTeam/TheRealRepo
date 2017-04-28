@@ -44,7 +44,7 @@ public class BooksDAOImpl implements BooksDAO {
         }
     }
 
-    public void updateBook(Book book,Integer bookId) throws SQLException {
+    public void updateBook(Book book) throws SQLException {
         Session session = null;
         try {
             session = sessionFactory.openSession();
@@ -110,14 +110,14 @@ public class BooksDAOImpl implements BooksDAO {
         }
     }
 
-    public List<Book> getBooksByAuthorId(Integer authorId) throws SQLException {
+    public List<Book> getBooksByAuthor(Author author) throws SQLException {
         Session session = null;
         List books = new ArrayList<Book>();
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            Query query = session.createQuery("from Book as bk where bk.authorID = :parameterId");
-            query.setParameter("parameterId",authorId);
+            Query query = session.createQuery("from Book as bk where bk.author = :parameterId");
+            query.setParameter("parameterId",author);
             books = query.list();
             //books = session.createSQLQuery("select * from books where books.authorID = " + author.getId()).list();
             session.getTransaction().commit();

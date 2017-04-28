@@ -19,7 +19,10 @@ import java.sql.SQLException;
 public class BooksController {
 
     @Autowired private BookService bookService;
+    @Autowired private AuthorService authorService;
 
+
+    //Все книги в базе (стоит сделать путь вроде books/pg?{id}, и выводить по X книг на каждый id, /books выводит первые Х книг)
     @RequestMapping(method=RequestMethod.GET)
     public ModelAndView allBooks(ModelMap map) throws SQLException{
         map.addAttribute("tempBook",bookService.getAll());
@@ -28,14 +31,16 @@ public class BooksController {
         return new ModelAndView("BooksDisplay");
     }
 
+    //Все книги за авторством Id
     @RequestMapping(method=RequestMethod.GET, value="/author/{id}")
     public ModelAndView allBooksByAuthorId(ModelMap map, @PathVariable("id") Integer id) throws SQLException{
-        map.addAttribute("tempBook",bookService.getBooksByAuthorId(id));
+        map.addAttribute("tempBook",bookService.getBooksByAuthor(authorService.getAuthorById(id)));
         map.addAttribute("title","Книги автора");
         map.addAttribute("pageHeader","Книги за авторством: ");
         return new ModelAndView("BooksDisplay");
     }
 
+    //Страница книги по Id
     @RequestMapping(method=RequestMethod.GET, value="/{id}")
     public ModelAndView BookById(ModelMap map, @PathVariable("id") Integer id) throws SQLException{
         map.addAttribute("tempBook",bookService.getBook(id));

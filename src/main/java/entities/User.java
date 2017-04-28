@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 /**
  * Created by Romio on 01.04.2017.
@@ -43,7 +44,13 @@ public class User {
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
+    @Column(name = "balance")
+    private BigDecimal balance;
 
+
+    public BigDecimal getBalance() {return this.balance;}
+
+    public void setBalance(BigDecimal balance) {this.balance = balance;}
     //Getters
 
     public Integer getId() {

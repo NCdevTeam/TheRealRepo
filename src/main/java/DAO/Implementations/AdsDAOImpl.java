@@ -43,7 +43,7 @@ public class AdsDAOImpl implements AdsDAO {
         }
     }
 
-    public void updateAd(Ad advert, Integer adId) throws SQLException {
+    public void updateAd(Ad advert) throws SQLException {
         Session session = null;
         try {
             session = sessionFactory.openSession();
@@ -108,14 +108,14 @@ public class AdsDAOImpl implements AdsDAO {
         }
     }
 
-    public List<Ad> getAdsByUserId(Integer userId) throws SQLException {
+    public List<Ad> getAdsByUser(User user) throws SQLException {
         Session session = null;
         List<Ad> ads = new ArrayList<Ad>();
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            Query query = session.createQuery("From Ad where Ad.userId = :parameterId");
-            query.setParameter("parameterId",userId);
+            Query query = session.createQuery("From Ad where Ad.user = :parameterId");
+            query.setParameter("parameterId",user);
             ads = query.list();
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -128,14 +128,14 @@ public class AdsDAOImpl implements AdsDAO {
         return ads;
     }
 
-    public List<Ad> getAdsByBookId(Integer bookId) throws SQLException {
+    public List<Ad> getAdsByBook(Book book) throws SQLException {
         Session session = null;
         List<Ad> ads = new ArrayList<Ad>();
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            Query query = session.createQuery("From Ad where Ad.bookId = :parameterId");
-            query.setParameter("parameterId",bookId);
+            Query query = session.createQuery("From Ad where Ad.book = :parameterId");
+            query.setParameter("parameterId",book);
             session.getTransaction().commit();
         } catch (Exception e ) {} finally {
             if (session != null && session.isOpen()) {

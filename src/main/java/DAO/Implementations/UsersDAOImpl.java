@@ -58,7 +58,7 @@ public class UsersDAOImpl implements UsersDAO {
         }
     }
 
-    public void updateUser(User user, Integer userId) throws SQLException {
+    public void updateUser(User user) throws SQLException {
         Session session = null;
         try {
             session = sessionFactory.openSession();

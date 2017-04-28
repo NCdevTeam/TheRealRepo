@@ -20,5 +20,5 @@ public interface BookService {
 
     public List<Book> getAll() throws SQLException;
     public Book getBook(Integer Id) throws SQLException;
-    public List<Book> getBooksByAuthorId(Integer authorId) throws SQLException;
+    public List<Book> getBooksByAuthor(Author author) throws SQLException;
 }

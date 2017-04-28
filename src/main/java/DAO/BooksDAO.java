@@ -12,9 +12,9 @@ import java.util.List;
 
 public interface BooksDAO {
     public void addBook(Book book) throws SQLException;
-    public void updateBook(Book book, Integer bookId) throws SQLException;
+    public void updateBook(Book book) throws SQLException;
     public Book getBookById(Integer bookId) throws SQLException;
     public List<Book> getAllBooks() throws SQLException;
     public void deleteBook(Book book) throws SQLException;
-    public List<Book> getBooksByAuthorId(Integer authorId) throws SQLException;
+    public List<Book> getBooksByAuthor(Author author) throws SQLException;
 }

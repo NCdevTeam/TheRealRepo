@@ -2,6 +2,8 @@ package main.java.services.Implementations;
 
 import main.java.DAO.AdsDAO;
 import main.java.entities.Ad;
+import main.java.entities.Book;
+import main.java.entities.User;
 import main.java.services.AdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,10 +27,10 @@ public class AdServiceImpl implements AdService {
     public Ad getAd(Integer id) throws SQLException{
         return adsDAO.getAdById(id);
     }
-    public List<Ad> getAdsByBookId(Integer id) throws SQLException{
-        return adsDAO.getAdsByBookId(id);
+    public List<Ad> getAdsByBook(Book book) throws SQLException{
+        return adsDAO.getAdsByBook(book);
     }
-    public List<Ad> getAdsByUserId(Integer id) throws SQLException{
-        return adsDAO.getAdsByUserId(id);
+    public List<Ad> getAdsByUser(User user) throws SQLException{
+        return adsDAO.getAdsByUser(user);
     }
 }

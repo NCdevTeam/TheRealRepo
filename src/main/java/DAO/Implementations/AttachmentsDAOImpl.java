@@ -42,7 +42,7 @@ public class AttachmentsDAOImpl implements AttachmentsDAO {
         }
     }
 
-    public void updateAttachment(Attachment attachment,Integer attachmentId) throws SQLException {
+    public void updateAttachment(Attachment attachment) throws SQLException {
         Session session = null;
         try {
             session = sessionFactory.openSession();
@@ -74,14 +74,14 @@ public class AttachmentsDAOImpl implements AttachmentsDAO {
         return attachment;
     }
 
-    public List<Attachment> getAttachmentsByAdId(Integer advertId) throws SQLException {
+    public List<Attachment> getAttachmentsByAd(Ad ad) throws SQLException {
         Session session = null;
         List<Attachment> attachments = new ArrayList<Attachment>();
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
-            Query query = session.createQuery("From Attachment as at where at.adsId = :parameterId");
-            query.setParameter("parameterId",advertId);
+            Query query = session.createQuery("From Attachment as at where at.ad = :parameterId");
+            query.setParameter("parameterId",ad);
             attachments = query.list();
             session.getTransaction().commit();
         } catch (Exception e) {
