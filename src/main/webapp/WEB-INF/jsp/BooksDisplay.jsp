@@ -5,10 +5,10 @@
   Time: 21:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@include file="header.jsp"%>
+<%@include file="includes/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <body>
-<h2>All Books in System</h2>
+<h2>${pageHeader}<h2>
 
 <table border="1">
     <tr>
