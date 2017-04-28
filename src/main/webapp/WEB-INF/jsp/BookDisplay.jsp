@@ -12,7 +12,13 @@
         <h3>${tempBook.name}</h3>
         <p>${tempBook.description}</p>
         <p>${tempBook.imageUrl}</p>
-        <p><a href="/books/author/${tempBook.authorID}">Псмотреть другие книги этого автора.</a></p>
+        <p><a href="/books/author/${tempBook.author.id}">Псмотреть другие книги этого автора.</a></p>
     </div>
+    <di>
+        <h3>Author info:</h3>
+        <p>${tempBook.author.name}</p>
+        <p>${tempBook.author.nickName}</p>
+        <p>${tempBook.author.lastName}</p>
+    </di>
 </body>
 </html>

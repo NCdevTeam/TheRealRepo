@@ -15,12 +15,14 @@
         <th>Book Id</th>
         <th>Book Name</th>
         <th>Book description Name</th>
+        <th>Book author</th>
     </tr>
     <c:forEach items="${tempBook}" var="bk">
         <tr>
             <td>${bk.id}</td>
             <td><a href="/books/${bk.id}">${bk.name}</a></td>
             <td>${bk.description}</td>
+            <td>${bk.author.nickName}</td>
         </tr>
     </c:forEach>
 </table>
