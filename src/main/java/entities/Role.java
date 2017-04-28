@@ -1,6 +1,7 @@
 package main.java.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by dR34m3r on 27.04.2017.
@@ -15,8 +16,9 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "userId")
-    private Integer userId;
+    @ManyToOne
+    @JoinColumn(name="userId")
+    private User user;
 
     @Column(name = "authority")
     private String role;
@@ -24,8 +26,8 @@ public class Role {
     public Integer getId() {return this.id;}
     public void setId(Integer id) {this.id = id;}
 
-    public Integer getUserId() {return this.userId;}
-    public void setUserId(Integer userId) {this.userId = userId;}
+    public User getUser() {return this.user;}
+    public void setUser(User user) {this.user = user;}
 
     public String getRole() {return this.role;}
     public void setRole(String role) {this.role = role;}

@@ -1,0 +1,52 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    background-color: #313b56;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+ul>li{
+    list-style-type: none;
+    margin: 10px;
+    
+}
+
+.name{
+    color: azure;
+    font-size: 40px;
+    margin-left: 30px;
+    text-shadow: 2px 2px 2px black;
+}
+.wrapper{
+    width: 960px;
+    height: 450px;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+    
+}
+#subbut{
+    width: 250px;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 20px;
+    background-color: #6c81eb;
+    border: none;
+    font-weight:bold;
+    color: azure;
+    box-shadow: 2px 2px 2px black;
+}
+input{
+    width: 250px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px black;
+    
+}
+#subbut:hover{
+    background: red;
+    opacity: 0.5;
+}

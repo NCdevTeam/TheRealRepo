@@ -50,11 +50,11 @@ public class User {
         return id;
     }
 
-    public String getLogin() {
+    public String getUsername() {
         return username;
     }
 
-    public String getPassHash() {
+    public String getPassword() {
         return password;
     }
 
@@ -84,11 +84,11 @@ public class User {
         this.id = id;
     }
 
-    public void setLogin(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setPassHash(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

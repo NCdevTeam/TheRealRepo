@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 import main.java.DAO.UsersDAO;
+import main.java.entities.Role;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,6 +25,22 @@ public class UsersDAOImpl implements UsersDAO {
 
     @Autowired
     SessionFactory sessionFactory;
+
+    public void addUserRole(Role role) throws SQLException {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.save(role);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            if(session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+    }
 
     public void addUser(User user) throws SQLException {
         Session session = null;
