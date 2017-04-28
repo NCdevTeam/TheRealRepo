@@ -26,8 +26,9 @@ public class Comment {
     @Column (name = "noteType")
     private noteType noteType;
 
-    @Column(name = "userID")
-    private Integer userId;
+    @ManyToOne
+    @JoinColumn(name = "userID")
+    private User user;
 
     @Column(name = "commentText")
     private String commentText;
@@ -50,8 +51,8 @@ public class Comment {
         return noteType;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
     public String getCommentText() {
@@ -76,8 +77,8 @@ public class Comment {
         this.noteType = noteType;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setCommentText(String commentText) {

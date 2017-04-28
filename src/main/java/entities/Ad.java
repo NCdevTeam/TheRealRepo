@@ -3,11 +3,7 @@ package main.java.entities;
 import main.java.entities.enums.adStatus;
 import main.java.entities.enums.adType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Romio on 01.04.2017.
@@ -27,11 +23,13 @@ public class Ad {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "userID")
-    private Integer userId;
+    @ManyToOne
+    @JoinColumn(name = "userID")
+    private User user;
 
-    @Column(name = "bookID")
-    private Integer bookId;
+    @ManyToOne
+    @JoinColumn(name = "bookID")
+    private Book book;
 
     @Column(name = "status")
     private adStatus status;
@@ -57,8 +55,8 @@ public class Ad {
         return description;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
     public adStatus getStatus() {
@@ -73,8 +71,8 @@ public class Ad {
         return type;
     }
 
-    public Integer getBookId() {
-        return bookId;
+    public Book getBook() {
+        return book;
     }
 
     //Setters
@@ -91,8 +89,8 @@ public class Ad {
         this.description = description;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setStatus(adStatus status) {
@@ -107,8 +105,8 @@ public class Ad {
         this.type = type;
     }
 
-    public void setBookId(Integer bookId) {
-        this.bookId = bookId;
+    public void setBook(Book book) {
+        this.book = book;
     }
 }
 

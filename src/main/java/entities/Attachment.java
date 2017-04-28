@@ -1,10 +1,6 @@
 package main.java.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Владислав on 01.04.2017.
@@ -18,8 +14,9 @@ public class Attachment  {
     @GeneratedValue
     private Integer id;
 
-    @Column (name = "adsId")
-    private Integer adsId;
+    @ManyToOne
+    @JoinColumn(name = "adsId")
+    private Ad ad;
 
     @Column (name = "URL")
     private String Url;
@@ -32,12 +29,12 @@ public class Attachment  {
         this.id = id;
     }
 
-    public Integer getAdsId() {
-        return adsId;
+    public Ad getAd() {
+        return ad;
     }
 
-    public void setAdsId(Integer adsId) {
-        this.adsId = adsId;
+    public void setAd(Ad ad) {
+        this.ad = ad;
     }
 
     public String getUrl() {

@@ -4,11 +4,7 @@ package main.java.entities;
  * Created by Владислав on 01.04.2017.
  */
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -20,8 +16,9 @@ public class Book {
     @GeneratedValue
     private Integer id;
 
-    @Column (name = "authorID")
-    private Integer authorID;
+    @ManyToOne
+    @JoinColumn(name = "authorID")
+    private Author author;
 
     @Column(name = "name")
     private String name;
@@ -43,11 +40,11 @@ public class Book {
         this.id = id;
     }
 
-    public void setAuthorID(Integer authorID) {
-        this.authorID = authorID;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
-    public Integer getAuthorID() { return this.authorID; }
+    public Author getAuthor() { return this.author; }
 
     public String getName() {
         return this.name;
