@@ -8,13 +8,14 @@ import main.java.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 
 /**
  * Created by dR34m3r on 28.04.2017.
  */
-
+@Transactional
 @Service
 public class UserServiceImpl implements UserService {
 

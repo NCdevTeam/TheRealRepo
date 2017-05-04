@@ -18,91 +18,29 @@ import org.springframework.transaction.annotation.Transactional;
 import main.java.entities.Author;
 
 @Repository
-@Transactional
 public class AuthorsDAOImpl implements AuthorsDAO {
 
     @Autowired
     SessionFactory sessionFactory;
 
     public void addAuthor(Author author) throws SQLException{
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.save(author);
-            session.getTransaction().commit();
-        } catch (Exception e ) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().save(author);
     }
 
     public void updateAuthor(Author author) throws SQLException{
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.update(author);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().update(author);
     }
 
     public Author getAuthorById(Integer authorId) throws SQLException{
-        Session session = null;
-        Author author = null;
-        try {
-            session = sessionFactory.openSession();
-            author = (Author) session.get(Author.class,authorId);
-        } catch (Exception e ){
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return author;
+        return (Author) sessionFactory.getCurrentSession().get(Author.class,authorId);
     }
 
     public void deleteAuthor(Author author) throws SQLException{
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.delete(author);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().delete(author);
     }
 
     public List<Author> getAllAuthors() throws SQLException{
-        Session session = null;
-        List authors = new ArrayList<Author>();
-        try {
-            session = sessionFactory.openSession();
-            Query query = session.createQuery("From Author ");
-            authors = query.list();
-        } catch (Exception e ){
-
-        } finally {
-            if(session != null && session.isOpen()){
-                session.close();
-            }
-        }
-        return authors;
+        return sessionFactory.getCurrentSession().createQuery("From Author").list();
     }
 
 }

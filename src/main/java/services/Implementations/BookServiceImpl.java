@@ -6,6 +6,7 @@ import main.java.entities.Book;
 import main.java.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * Created by dR34m3r on 26.04.2017.
  */
-
+@Transactional
 @Service
 public class BookServiceImpl implements BookService{
 
