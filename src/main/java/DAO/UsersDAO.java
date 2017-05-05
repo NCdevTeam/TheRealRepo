@@ -18,4 +18,5 @@ public interface UsersDAO {
     public User getUserById(Integer userId) throws SQLException;
     public List<User> getAllUsers() throws SQLException;
     public void deleteUser(User user) throws SQLException;
+    public User findUserByName(String name) throws SQLException;
 }

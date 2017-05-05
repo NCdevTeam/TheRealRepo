@@ -24,7 +24,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/registration")
-    public String register(@ModelAttribute("NewUser")User user, ModelMap map) throws SQLException {
+    public String register(@ModelAttribute("NewUser")User user, ModelMap map) {
         userService.createUser(user);
         return "redirect:/books";
     }

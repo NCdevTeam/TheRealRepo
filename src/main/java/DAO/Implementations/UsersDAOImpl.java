@@ -48,4 +48,17 @@ public class UsersDAOImpl implements UsersDAO {
     public void deleteUser(User user) throws SQLException{
         sessionFactory.getCurrentSession().delete(user);
     }
+
+    @Override
+    public User findUserByName(String name) throws SQLException {
+        List<User> userList = sessionFactory.getCurrentSession().createQuery("From User where username = :parameterName")
+                .setParameter("parameterName",name).list();
+        return userList.get(0);
+//                (User) sessionFactory.getCurrentSession()
+//                .createSQLQuery("Select * from User where User.username = " + name).addEntity(User.class);
+//        return (User)sessionFactory
+//                .getCurrentSession()
+//                .createQuery("From User where User.username = :parameterName")
+//                .setParameter("parameterName",name);
+    }
 }

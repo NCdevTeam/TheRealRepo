@@ -20,18 +20,34 @@ import java.sql.SQLException;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UsersDAO dao;
+    UsersDAO usersDao;
 
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
 
-    public void createUser(User user) throws SQLException {
-        user.setStatus(userStatus.active);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Role role = new Role();
-        role.setUser(user);
-        role.setRole("ROLE_USER");
-        dao.addUser(user);
-        dao.addUserRole(role);
+    public void createUser(User user) {
+        try {
+            user.setStatus(userStatus.active);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            Role role = new Role();
+            role.setUser(user);
+            role.setRole("ROLE_USER");
+            usersDao.addUser(user);
+            usersDao.addUserRole(role);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public User findUserByName(String name) {
+        User user = null;
+        try {
+            user = usersDao.findUserByName(name);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return user;
+        }
     }
 }

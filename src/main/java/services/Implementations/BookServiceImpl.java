@@ -21,15 +21,36 @@ public class BookServiceImpl implements BookService{
     @Autowired
     private BooksDAO booksDAO;
 
-    public List<Book> getAll() throws SQLException {
-        return booksDAO.getAllBooks();
+    public List<Book> getAll() {
+        List<Book> bookList = null;
+        try {
+            bookList = booksDAO.getAllBooks();
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            return bookList;
+        }
     }
 
-    public Book getBook(Integer Id) throws SQLException{
-        return booksDAO.getBookById(Id);
+    public Book getBook(Integer Id) {
+        Book book = null;
+        try {
+            book = booksDAO.getBookById(Id);
+        } catch (SQLException e ){
+            e.printStackTrace();
+        } finally {
+            return book;
+        }
     }
 
-    public List<Book> getBooksByAuthor(Author author) throws SQLException{
-        return booksDAO.getBooksByAuthor(author);
+    public List<Book> getBooksByAuthor(Author author) {
+        List<Book> bookList = null;
+        try {
+            bookList = booksDAO.getBooksByAuthor(author);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return bookList;
+        }
     }
 }

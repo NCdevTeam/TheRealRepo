@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: dR3wD
@@ -9,16 +10,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <body>
     <div>
-        <h3>${tempBook.name}</h3>
-        <p>${tempBook.description}</p>
-        <p>${tempBook.imageUrl}</p>
-        <p><a href="/books/author/${tempBook.author.id}">Псмотреть другие книги этого автора.</a></p>
+        <h3>${item.name}</h3>
+        <p>${item.description}</p>
+        <p>${item.imageUrl}</p>
+        <p><a href="/books/author/${item.author.id}">Псмотреть другие книги этого автора.</a></p>
     </div>
     <di>
         <h3>Author info:</h3>
-        <p>${tempBook.author.name}</p>
-        <p>${tempBook.author.nickName}</p>
-        <p>${tempBook.author.lastName}</p>
+        <p>${item.author.name}</p>
+        <p>${item.author.nickName}</p>
+        <p>${item.author.lastName}</p>
     </di>
+<%@include file="includes/commentSection.jsp"%>
 </body>
 </html>
