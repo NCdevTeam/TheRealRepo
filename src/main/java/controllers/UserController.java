@@ -26,7 +26,7 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST, value = "/registration")
     public String register(@ModelAttribute("NewUser")User user, ModelMap map) {
         userService.createUser(user);
-        return "redirect:/books";
+        return "redirect:/book";
     }
 
     @RequestMapping(method = RequestMethod.GET,value="/registration")

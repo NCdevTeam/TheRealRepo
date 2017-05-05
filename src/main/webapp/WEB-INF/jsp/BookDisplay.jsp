@@ -13,7 +13,7 @@
         <h3>${item.name}</h3>
         <p>${item.description}</p>
         <p>${item.imageUrl}</p>
-        <p><a href="/books/author/${item.author.id}">Псмотреть другие книги этого автора.</a></p>
+        <p><a href="/book/author/${item.author.id}">Псмотреть другие книги этого автора.</a></p>
     </div>
     <di>
         <h3>Author info:</h3>
