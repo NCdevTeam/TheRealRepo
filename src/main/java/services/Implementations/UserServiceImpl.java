@@ -8,29 +8,46 @@ import main.java.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 
 /**
  * Created by dR34m3r on 28.04.2017.
  */
-
+@Transactional
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UsersDAO dao;
+    UsersDAO usersDao;
 
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
 
-    public void createUser(User user) throws SQLException {
-        user.setStatus(userStatus.active);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Role role = new Role();
-        role.setUser(user);
-        role.setRole("ROLE_USER");
-        dao.addUser(user);
-        dao.addUserRole(role);
+    public void createUser(User user) {
+        try {
+            user.setStatus(userStatus.active);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            Role role = new Role();
+            role.setUser(user);
+            role.setRole("ROLE_USER");
+            usersDao.addUser(user);
+            usersDao.addUserRole(role);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public User findUserByName(String name) {
+        User user = null;
+        try {
+            user = usersDao.findUserByName(name);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return user;
+        }
     }
 }

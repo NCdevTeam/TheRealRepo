@@ -3,6 +3,9 @@ package main.java.controllers;
 //import org.library.entities.Book;
 //import org.library.services.BookService;
 
+import main.java.entities.Book;
+import main.java.entities.Comment;
+import main.java.entities.enums.noteType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,11 +18,12 @@ import main.java.services.*;
 import java.sql.SQLException;
 
 @Controller
-@RequestMapping("/books")
+@RequestMapping("/book")
 public class BooksController {
 
     @Autowired private BookService bookService;
     @Autowired private AuthorService authorService;
+    @Autowired private CommentService commentService;
 
 
     //Все книги в базе (стоит сделать путь вроде books/pg?{id}, и выводить по X книг на каждый id, /books выводит первые Х книг)
@@ -43,8 +47,12 @@ public class BooksController {
     //Страница книги по Id
     @RequestMapping(method=RequestMethod.GET, value="/{id}")
     public ModelAndView BookById(ModelMap map, @PathVariable("id") Integer id) throws SQLException{
-        map.addAttribute("tempBook",bookService.getBook(id));
+        Book book = bookService.getBook(id);
+        map.addAttribute("item",book);
         map.addAttribute("title","Паспорт книги");
+        map.addAttribute("commentList",commentService.getCommentsByNote(book.getId(), noteType.book));
+        map.addAttribute("newComment",new Comment());
+        map.addAttribute("noteType",noteType.book);
         return new ModelAndView("BookDisplay");
     }
 

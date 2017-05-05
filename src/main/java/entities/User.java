@@ -47,10 +47,6 @@ public class User {
     @Column(name = "balance")
     private BigDecimal balance;
 
-
-    public BigDecimal getBalance() {return this.balance;}
-
-    public void setBalance(BigDecimal balance) {this.balance = balance;}
     //Getters
 
     public Integer getId() {
@@ -85,6 +81,8 @@ public class User {
         return phoneNumber;
     }
 
+    public BigDecimal getBalance() {return this.balance;}
+
     //Setters
 
     public void setId(Integer id) {
@@ -118,4 +116,6 @@ public class User {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    public void setBalance(BigDecimal balance) {this.balance = balance;}
 }

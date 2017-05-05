@@ -17,8 +17,7 @@ import main.java.DAO.BooksDAO;
  */
 
 public interface BookService {
-
-    public List<Book> getAll() throws SQLException;
-    public Book getBook(Integer Id) throws SQLException;
-    public List<Book> getBooksByAuthor(Author author) throws SQLException;
+    public List<Book> getAll();
+    public Book getBook(Integer Id);
+    public List<Book> getBooksByAuthor(Author author);
 }

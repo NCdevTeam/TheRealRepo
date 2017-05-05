@@ -10,7 +10,7 @@
 <body>
 <div>
     <h3>Here comes the header!</h3>
-    <p> Пошли книжки посмотрим. <a href="../books">Книжки</a></p>
+    <p> Пошли книжки посмотрим. <a href="../book">Книжки</a></p>
 </div>
 </body>
 </html>

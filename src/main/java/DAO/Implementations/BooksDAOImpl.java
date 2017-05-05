@@ -22,113 +22,36 @@ import main.java.entities.Book;
 import main.java.entities.Author;
 
 @Repository
-@Transactional
 public class BooksDAOImpl implements BooksDAO {
 
     @Autowired
     SessionFactory sessionFactory;
 
     public void addBook(Book book) throws SQLException {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.save(book);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().save(book);
     }
 
     public void updateBook(Book book) throws SQLException {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.update(book);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().update(book);
     }
 
     public Book getBookById(Integer bookId) throws SQLException {
-        Session session = null;
-        Book book = null;
-        try {
-            session = sessionFactory.openSession();
-            book = (Book) session.get(Book.class,bookId);
-        } catch (Exception e ){
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return book;
+        return (Book) sessionFactory.getCurrentSession().get(Book.class,bookId);
     }
 
     public List<Book> getAllBooks() throws SQLException {
-        Session session = null;
-        List<Book> books = new ArrayList<Book>();
-        try {
-            session = sessionFactory.openSession();
-            Query query = session.createQuery("From Book");
-            books = query.list();
-            //books = (List<Book>)session.createSQLQuery("Select * from books").addEntity(Book.class).list();
-        } catch (Exception e) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return books;
+        return sessionFactory.getCurrentSession().createQuery("From Book").list();
     }
 
     public void deleteBook(Book book) throws SQLException {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.delete(book);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().delete(book);
     }
 
     public List<Book> getBooksByAuthor(Author author) throws SQLException {
-        Session session = null;
-        List books = new ArrayList<Book>();
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            Query query = session.createQuery("from Book as bk where bk.author = :parameterId");
-            query.setParameter("parameterId",author);
-            books = query.list();
-            //books = session.createSQLQuery("select * from books where books.authorID = " + author.getId()).list();
-            session.getTransaction().commit();
-
-        } catch (Exception e ) {
-
-        } finally {
-            if( session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return books;
+        return sessionFactory
+                .getCurrentSession()
+                .createQuery("From Book as bk where bk.author = :parameterId")
+                .setParameter("parameterId",author)
+                .list();
     }
 }

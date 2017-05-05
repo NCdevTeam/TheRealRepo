@@ -21,127 +21,44 @@ import main.java.entities.Book;
 import main.java.entities.User;
 
 @Repository
-@Transactional
 public class AdsDAOImpl implements AdsDAO {
 
     @Autowired
     SessionFactory sessionFactory;
 
     public void addAd(Ad advert) throws SQLException {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.save(advert);
-            session.getTransaction().commit();
-        } catch (Exception e ) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().save(advert);
     }
 
     public void updateAd(Ad advert) throws SQLException {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.update(advert);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().update(advert);
     }
 
     public Ad getAdById(Integer adId) throws SQLException {
-        Session session = null;
-        Ad advert = null;
-        try {
-            session = sessionFactory.openSession();
-            advert = (Ad) session.get(Ad.class,adId);
-        } catch (Exception e ){
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return advert;
+        return (Ad) sessionFactory.getCurrentSession().get(Ad.class,adId);
     }
 
     public List<Ad> getAllAds() throws SQLException {
-        Session session = null;
-        List<Ad> ads = new ArrayList<Ad>();
-        try {
-            session = sessionFactory.openSession();
-            Query query = session.createQuery("From Ad");
-            ads = query.list();
-        } catch (Exception e ) {
-
-        }finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return ads;
+        return sessionFactory.getCurrentSession().createQuery("From Ad").list();
     }
 
     public void deleteAd(Ad advert) throws SQLException {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.delete(advert);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().delete(advert);
     }
 
     public List<Ad> getAdsByUser(User user) throws SQLException {
-        Session session = null;
-        List<Ad> ads = new ArrayList<Ad>();
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            Query query = session.createQuery("From Ad where Ad.user = :parameterId");
-            query.setParameter("parameterId",user);
-            ads = query.list();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return ads;
+        return sessionFactory
+                .getCurrentSession()
+                .createQuery("From Ad where Ad.user = :parameterId")
+                .setParameter("parameterId",user)
+                .list();
     }
 
     public List<Ad> getAdsByBook(Book book) throws SQLException {
-        Session session = null;
-        List<Ad> ads = new ArrayList<Ad>();
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            Query query = session.createQuery("From Ad where Ad.book = :parameterId");
-            query.setParameter("parameterId",book);
-            session.getTransaction().commit();
-        } catch (Exception e ) {} finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return ads;
+        return sessionFactory
+                .getCurrentSession()
+                .createQuery("From Ad where Ad.book = :parameterId")
+                .setParameter("parameterId",book)
+                .list();
     }
 }

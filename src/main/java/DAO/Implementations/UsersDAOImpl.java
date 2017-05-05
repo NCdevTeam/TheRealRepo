@@ -20,108 +20,45 @@ import org.springframework.transaction.annotation.Transactional;
 import main.java.entities.User;
 
 @Repository
-@Transactional
 public class UsersDAOImpl implements UsersDAO {
 
     @Autowired
     SessionFactory sessionFactory;
 
     public void addUserRole(Role role) throws SQLException {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.save(role);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if(session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().save(role);
     }
 
     public void addUser(User user) throws SQLException {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.save(user);
-            session.getTransaction().commit();
-        } catch (Exception e ) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().save(user);
     }
 
     public void updateUser(User user) throws SQLException {
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.update(user);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().update(user);
     }
 
     public User getUserById(Integer userId) throws SQLException{
-        Session session = null;
-        User user = null;
-        try {
-            session = sessionFactory.openSession();
-            user = (User) session.get(User.class,userId);
-        } catch (Exception e ){
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return user;
+        return (User) sessionFactory.getCurrentSession().get(User.class,userId);
     }
 
     public List<User> getAllUsers() throws SQLException{
-        Session session = null;
-        List users = new ArrayList<User>();
-        try {
-            session = sessionFactory.openSession();
-            Query query = session.createQuery("From User");
-            users = query.list();
-        } catch (Exception e) {
-
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return users;
+        return sessionFactory.getCurrentSession().createQuery("From User").list();
     }
 
     public void deleteUser(User user) throws SQLException{
-        Session session = null;
-        try {
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.delete(user);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-
-        } finally {
-            if(session != null && session.isOpen()){
-                session.close();
-            }
-        }
+        sessionFactory.getCurrentSession().delete(user);
     }
 
-
+    @Override
+    public User findUserByName(String name) throws SQLException {
+        List<User> userList = sessionFactory.getCurrentSession().createQuery("From User where username = :parameterName")
+                .setParameter("parameterName",name).list();
+        return userList.get(0);
+//                (User) sessionFactory.getCurrentSession()
+//                .createSQLQuery("Select * from User where User.username = " + name).addEntity(User.class);
+//        return (User)sessionFactory
+//                .getCurrentSession()
+//                .createQuery("From User where User.username = :parameterName")
+//                .setParameter("parameterName",name);
+    }
 }
