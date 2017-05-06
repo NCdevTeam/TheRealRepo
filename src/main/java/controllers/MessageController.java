@@ -39,7 +39,7 @@ public class MessageController {
         return new ModelAndView("dialogDisplay");
     }
 
-    @RequestMapping(method=RequestMethod.POST, value="/{userName}/send")
+    @RequestMapping(method=RequestMethod.POST, value="/{userName}/send",consumes="application/x-www-form-urlencoded;charset=UTF-8")
     public String sendMessage(ModelMap map
             ,@ModelAttribute("newMessage")Message message
             ,Principal principal
@@ -50,5 +50,13 @@ public class MessageController {
         message.setReceiver(receiver);
         messageService.addMessage(message);
         return "redirect:/dialog/" + message.getReceiver().getUsername();
+    }
+
+    @RequestMapping(method=RequestMethod.GET)
+    public ModelAndView displayDialogs(ModelMap map,Principal principal) {
+        User currentUser = userService.findUserByName(principal.getName());
+        List<User> userList = messageService.getListOfInterlocutors(currentUser);
+        map.addAttribute("item",userList);
+        return new ModelAndView("dialogsDisplay");
     }
 }

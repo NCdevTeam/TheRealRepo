@@ -7,7 +7,10 @@ import main.java.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.nio.cs.ISO_8859_2;
+import sun.nio.cs.UTF_32;
 
+import java.nio.charset.Charset;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +29,8 @@ public class MessageServiceImpl implements MessageService {
     public void addMessage(Message message) {
         try {
             message.setMsgDateTime(new Date());
+            byte[] ptext = message.getText().getBytes(Charset.forName("ISO-8859-1"));
+            message.setText(new String(ptext, Charset.forName("UTF-8")));
             msgDao.addMessage(message);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -53,6 +58,18 @@ public class MessageServiceImpl implements MessageService {
             e.printStackTrace();
         } finally {
             return messageList;
+        }
+    }
+
+    @Override
+    public List<User> getListOfInterlocutors(User user) {
+        List<User> userList = null;
+        try {
+            userList = msgDao.getListOfInterlocutors(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return userList;
         }
     }
 }

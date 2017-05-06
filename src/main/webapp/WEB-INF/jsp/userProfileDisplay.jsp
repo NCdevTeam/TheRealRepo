@@ -13,6 +13,7 @@
     <h4>email: ${item.email}</h4>
     <h4>phone number ${item.phoneNumber}</h4>
     <h4>current balance ${item.balance} dorars</h4>
+    <a href="/dialog">Показать диалоги</a>
     <a href="/dialog/${item.username}">Диалог с пользователем</a>
 </div>
 </body>

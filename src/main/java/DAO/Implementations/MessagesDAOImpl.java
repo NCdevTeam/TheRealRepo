@@ -45,4 +45,23 @@ public class MessagesDAOImpl implements MessagesDAO {
     public void addMessage(Message message) throws SQLException {
         sessionFactory.getCurrentSession().save(message);
     }
+
+    @Override
+    public List<User> getListOfInterlocutors(User user) throws SQLException {
+        return sessionFactory
+                .getCurrentSession()
+                .createSQLQuery(
+                             "Select `user`.* " +
+                                "From messages " +
+                                "join `user` on `user`.ID = messages.whomUserId " +
+                                "where fromUserId = " + user.getId() +
+                                " union " +
+                                     "select `user`.* " +
+                                     "From messages " +
+                                     "join `user` on `user`.ID = messages.fromUserId " +
+                                     "where whomUserId = " + user.getId()
+                )
+                .addEntity(User.class)
+                .list();
+    }
 }

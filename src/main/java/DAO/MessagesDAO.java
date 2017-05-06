@@ -13,4 +13,5 @@ public interface MessagesDAO {
     public void addMessage(Message message) throws SQLException;
     public List<Message> getUserMessageList(User user) throws SQLException;
     public List<Message> getDialog(User sender, User receiver) throws SQLException;
+    public List<User> getListOfInterlocutors(User user) throws SQLException;
 }

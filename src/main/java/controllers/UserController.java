@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(method = RequestMethod.GET, value="/{userName}")
+    @RequestMapping(method = RequestMethod.GET, value="user/{userName}")
     public ModelAndView displayUserProfile(ModelMap map, @PathVariable("userName") String userName) {
         User user = userService.findUserByName(userName);
         map.addAttribute("item",user);

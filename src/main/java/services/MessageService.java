@@ -12,4 +12,5 @@ public interface MessageService {
     public List<Message> getDialog(User sender, User receiver);
     public List<Message> getUserMessageList(User user);
     public void addMessage(Message message);
+    public List<User> getListOfInterlocutors(User user);
 }

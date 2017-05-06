@@ -64,12 +64,16 @@ public class HibernateConfig {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
+
     Properties hibernateProperties() {
         return new Properties() {
             {
                 setProperty("hibernate.hbm2ddl.auto","update");
                 setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
                 setProperty("hibernate.globally_quoted_identifiers", "true");
+                setProperty("hibernate.connection.CharSet","utf8");
+                setProperty("hibernate.connection.characterEncoding","utf8");
+                setProperty("hibernate.connection.userUnicode","true");
             }
         };
     }

@@ -10,7 +10,7 @@
         </tr>
         <c:forEach items="${commentList}" var="comment">
             <tr>
-                <td><a href="/${comment.user.username}">${comment.user.username}</a></td>
+                <td><a href="/user/${comment.user.username}">${comment.user.username}</a></td>
                 <td>${comment.commentText}</td>
                 <td>${comment.dateTime}</td>
             </tr>
