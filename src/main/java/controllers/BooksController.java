@@ -37,7 +37,7 @@ public class BooksController {
 
     //Все книги за авторством Id
     @RequestMapping(method=RequestMethod.GET, value="/author/{id}")
-    public ModelAndView allBooksByAuthorId(ModelMap map, @PathVariable("id") Integer id) throws SQLException{
+    public ModelAndView allBooksByAuthorId(ModelMap map, @PathVariable("id") Integer id) {
         map.addAttribute("tempBook",bookService.getBooksByAuthor(authorService.getAuthorById(id)));
         map.addAttribute("title","Книги автора");
         map.addAttribute("pageHeader","Книги за авторством: ");
@@ -46,7 +46,7 @@ public class BooksController {
 
     //Страница книги по Id
     @RequestMapping(method=RequestMethod.GET, value="/{id}")
-    public ModelAndView BookById(ModelMap map, @PathVariable("id") Integer id) throws SQLException{
+    public ModelAndView BookById(ModelMap map, @PathVariable("id") Integer id) {
         Book book = bookService.getBook(id);
         map.addAttribute("item",book);
         map.addAttribute("title","Паспорт книги");

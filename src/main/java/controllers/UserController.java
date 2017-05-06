@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,6 +23,14 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @RequestMapping(method = RequestMethod.GET, value="/{userName}")
+    public ModelAndView displayUserProfile(ModelMap map, @PathVariable("userName") String userName) {
+        User user = userService.findUserByName(userName);
+        map.addAttribute("item",user);
+        map.addAttribute("title","Профиль пользователя");
+        return new ModelAndView("userProfileDisplay");
+    }
 
     @RequestMapping(method = RequestMethod.POST, value = "/registration")
     public String register(@ModelAttribute("NewUser")User user, ModelMap map) {

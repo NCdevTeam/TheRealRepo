@@ -13,11 +13,12 @@
 
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>${title}</title>
     <div style="width:100%;height: 33px;background: #8379cc;padding:5px;border: solid 3px #404256;">
         <a href="/" style="color: #acffb5;margin-right: 15px;">На глагнэ</a>
         <sec:authorize access="isAuthenticated()">
-            Вы вошли как: <sec:authentication property="principal.username"/>
+            Вы вошли как: <a href="/<sec:authentication property="principal.username"/>"><sec:authentication property="principal.username"/></a>
             <a href="logout" style="color: #acffb5;margin-left: 15px;">Выйти</a>
         </sec:authorize>
         <sec:authorize access="isAnonymous()">

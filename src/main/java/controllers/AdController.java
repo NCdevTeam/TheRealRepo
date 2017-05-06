@@ -13,13 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLException;
 
+import main.java.entities.enums.noteType;
+
 
 /**
  * Created by Владислав on 24.04.2017.
  */
 
 @Controller
-@RequestMapping("/adverts")
+@RequestMapping("/ad")
 public class AdController {
 
     @Autowired private AdService adService;

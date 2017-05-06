@@ -53,6 +53,9 @@ public class UsersDAOImpl implements UsersDAO {
     public User findUserByName(String name) throws SQLException {
         List<User> userList = sessionFactory.getCurrentSession().createQuery("From User where username = :parameterName")
                 .setParameter("parameterName",name).list();
+        if(userList.isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
         return userList.get(0);
 //                (User) sessionFactory.getCurrentSession()
 //                .createSQLQuery("Select * from User where User.username = " + name).addEntity(User.class);

@@ -5,7 +5,17 @@ package main.java.entities.enums;
  */
 
 public enum noteType {
-    ad,
-    author,
-    book
+    ad("/ad"),
+    author("/author"),
+    book("/book");
+
+    private String url;
+
+    noteType(String url) {
+        this.url=url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
 }

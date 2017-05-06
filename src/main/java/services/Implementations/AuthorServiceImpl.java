@@ -19,7 +19,14 @@ public class AuthorServiceImpl implements AuthorService {
     @Autowired
     AuthorsDAO authorsDAO;
 
-    public Author getAuthorById(Integer authorId) throws SQLException {
-        return authorsDAO.getAuthorById(authorId);
+    public Author getAuthorById(Integer authorId)  {
+        Author author = null;
+        try {
+            author = authorsDAO.getAuthorById(authorId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return author;
+        }
     }
 }
