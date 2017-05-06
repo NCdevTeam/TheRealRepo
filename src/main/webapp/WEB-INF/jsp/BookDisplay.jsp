@@ -15,12 +15,33 @@
         <p>${item.imageUrl}</p>
         <p><a href="/book/author/${item.author.id}">Псмотреть другие книги этого автора.</a></p>
     </div>
-    <di>
+    <div>
         <h3>Author info:</h3>
         <p>${item.author.name}</p>
         <p>${item.author.nickName}</p>
         <p>${item.author.lastName}</p>
-    </di>
+    </div>
+    <sec:authorize access="isAuthenticated()">
+        <c:if test="${!hasBought}">
+            <c:choose>
+                <c:when test="${!hasWish}">
+                    <div>
+                        <a href="/book/wish/${item.id}">I wish this book was MINE!</a>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div>
+                        <p>In ur wish pool</p>
+                        <a href="/book/deleteWish/${item.id}">Delete from my wish list... meh..</a>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+            <div>
+                <a href="http://google.com">Find ad with this book!</a>
+            </div>
+        </c:if>
+
+    </sec:authorize>
 <%@include file="includes/commentSection.jsp"%>
 </body>
 </html>

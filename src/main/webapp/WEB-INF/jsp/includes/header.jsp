@@ -19,11 +19,11 @@
         <a href="/" style="color: #acffb5;margin-right: 15px;">На глагнэ</a>
         <sec:authorize access="isAuthenticated()">
             Вы вошли как: <a href="/<sec:authentication property="principal.username"/>"><sec:authentication property="principal.username"/></a>
-            <a href="logout" style="color: #acffb5;margin-left: 15px;">Выйти</a>
+            <a href="/logout" style="color: #acffb5;margin-left: 15px;">Выйти</a>
         </sec:authorize>
         <sec:authorize access="isAnonymous()">
             Пожалуйста,
-            <a href="login" style="color: #acffb5;">войдите</a>
+            <a href="/login" style="color: #acffb5;">войдите</a>
             или
             <a href="registration" style="color: #acffb5;">зарегистрируйтесь.</a>
         </sec:authorize>

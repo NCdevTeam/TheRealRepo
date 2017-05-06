@@ -4,13 +4,14 @@ import main.java.entities.Comment;
 import main.java.entities.User;
 import main.java.entities.enums.noteType;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.sql.SQLException;
 import java.util.List;
 
 /**
  * Created by dR34m3r on 09.04.2017.
  */
-
 public interface CommentsDAO {
     public void addComment(Comment comment) throws SQLException;
     public Comment getCommentById(Integer commentId) throws SQLException;

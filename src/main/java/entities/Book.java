@@ -78,5 +78,13 @@ public class Book {
         this.downloadURL = downloadUrl;
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (!(obj instanceof Book)) return false;
+        Book temp = (Book)obj;
+        if(temp.getId().equals(this.getId())) return true;
+        return false;
+    }
 }

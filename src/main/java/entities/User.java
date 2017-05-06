@@ -15,7 +15,6 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "user")
-
 public class User {
 
     @Id
