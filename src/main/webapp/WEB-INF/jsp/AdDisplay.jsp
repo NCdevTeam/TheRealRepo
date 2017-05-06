@@ -11,6 +11,15 @@
     <title>Title</title>
 </head>
 <body>
-
+    <h3>${tempAd.name}</h3>
+    <p>${tempAd.description}</p>
+    <p>${tempAd.status}</p>
+</div>
+    <p><a href="/books/${tempAd.book.id}">Перейти на страницу книги.</a></p>
+</div>
+<div>
+    <h3>Ad info:</h3>
+    <p>${tempAd.user.username}</p>
+</div>
 </body>
 </html>

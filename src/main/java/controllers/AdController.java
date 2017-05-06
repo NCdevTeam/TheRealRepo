@@ -26,10 +26,12 @@ public class AdController {
 
     @Autowired private AdService adService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/")
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public ModelAndView AdById(ModelMap map, @PathVariable("id") Integer id) throws SQLException{
         map.addAttribute("tempAd", adService.getAd(id));
-       return new ModelAndView("AdDisplay");
+        return new ModelAndView("AdDisplay");
     }
+
+
 
 }
