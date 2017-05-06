@@ -35,7 +35,9 @@ public class CommentsDAOImpl implements CommentsDAO {
     public List<Comment> getCommentsByNote(Integer noteId, noteType type) throws SQLException {
         return sessionFactory
                 .getCurrentSession()
-                .createQuery("From Comment as c where c.noteId = noteId and c.noteType = noteType")
+                .createQuery("From Comment as c where c.noteId = :parameterId and c.noteType = :parameterType")
+                .setParameter("parameterId",noteId)
+                .setParameter("parameterType",type)
                 .list();
     }
 
