@@ -6,6 +6,7 @@ package main.java.controllers;
 import main.java.entities.Book;
 import main.java.entities.Comment;
 import main.java.entities.User;
+import main.java.entities.Userbook;
 import main.java.entities.enums.userBookType;
 import main.java.entities.enums.noteType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import main.java.services.*;
 
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/book")
@@ -78,6 +80,26 @@ public class BooksController {
     public String deleteFromWishPool(ModelMap map, @PathVariable("id") Integer id, Principal principal) {
         userBookService.deleteLink(principal.getName(),id,userBookType.wish);
         return "redirect:/book/"+id;
+    }
+
+    //Показать список книг вошедшего в систему юзера
+    @RequestMapping(method = RequestMethod.GET,value="/library")
+    public ModelAndView displayMyBooks(ModelMap map, Principal principal) {
+        User user = userService.findUserByName(principal.getName());
+        List<Userbook> userbookList = userBookService.findUserLinksByType(user, userBookType.pool);
+        map.addAttribute("item",userbookList);
+        map.addAttribute("title","Ваш список книг");
+        return new ModelAndView("displayLinkedBooks");
+    }
+
+    //Список желаний вошедшего в систему юзера
+    @RequestMapping(method = RequestMethod.GET,value="/wishes")
+    public ModelAndView displayMyWishes(ModelMap map, Principal principal) {
+        User user = userService.findUserByName(principal.getName());
+        List<Userbook> userbookList = userBookService.findUserLinksByType(user, userBookType.wish);
+        map.addAttribute("item",userbookList);
+        map.addAttribute("title","Список желаний");
+        return new ModelAndView("displayLinkedBooks");
     }
 
 }

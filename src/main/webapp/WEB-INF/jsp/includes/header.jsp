@@ -21,7 +21,7 @@
             Вы вошли как: <a href="/user/<sec:authentication property="principal.username"/>"><sec:authentication property="principal.username"/></a>
             <a href="/logout" style="color: #acffb5;margin-left: 15px;">Выйти</a>
             <div>
-                <a href="/dialog">Диалоги</a>
+                <a href="/dialog">Диалоги</a> <a href="/book/wishes">Мои желания</a> <a href="/book/library">Мои книги</a>
             </div>
         </sec:authorize>
         <sec:authorize access="isAnonymous()">
