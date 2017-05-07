@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by dR34m3r on 28.04.2017.
@@ -19,6 +20,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Autowired
     AuthorsDAO authorsDAO;
 
+    @Override
     public Author getAuthorById(Integer authorId)  {
         Author author = null;
         try {
@@ -27,6 +29,18 @@ public class AuthorServiceImpl implements AuthorService {
             e.printStackTrace();
         } finally {
             return author;
+        }
+    }
+
+    @Override
+    public List<Author> getAllAuthors() {
+        List<Author> authorList = null;
+        try {
+            authorList = authorsDAO.getAllAuthors();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return authorList;
         }
     }
 }

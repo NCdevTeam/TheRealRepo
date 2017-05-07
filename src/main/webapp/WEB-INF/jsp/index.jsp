@@ -11,6 +11,7 @@
 <div>
     <h3>Here comes the header!</h3>
     <p> Пошли книжки посмотрим. <a href="../book">Книжки</a></p>
+    <p>Или авторов,м,м,м. <a href="/author">Авторы</a></p>
 </div>
 </body>
 </html>

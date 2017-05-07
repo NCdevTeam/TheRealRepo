@@ -32,6 +32,17 @@ public class Author {
     @Column (name = "description")
     private String description;
 
+    @Column (name="photoURL")
+    private String photoURL;
+
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -60,7 +71,7 @@ public class Author {
         return nickName;
     }
 
-    public void setNickname(String nickname) {
+    public void setNickName(String nickname) {
         this.nickName = nickName;
     }
 

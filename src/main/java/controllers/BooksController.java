@@ -3,10 +3,7 @@ package main.java.controllers;
 //import org.library.entities.Book;
 //import org.library.services.BookService;
 
-import main.java.entities.Book;
-import main.java.entities.Comment;
-import main.java.entities.User;
-import main.java.entities.Userbook;
+import main.java.entities.*;
 import main.java.entities.enums.userBookType;
 import main.java.entities.enums.noteType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +31,7 @@ public class BooksController {
 
     //Все книги в базе (стоит сделать путь вроде books/pg?{id}, и выводить по X книг на каждый id, /books выводит первые Х книг)
     @RequestMapping(method=RequestMethod.GET)
-    public ModelAndView allBooks(ModelMap map) throws SQLException{
+    public ModelAndView allBooks(ModelMap map) {
         map.addAttribute("tempBook",bookService.getAll());
         map.addAttribute("title","Список всех книг.");
         map.addAttribute("pageHeader","Все книги в системе.");
@@ -44,9 +41,10 @@ public class BooksController {
     //Все книги за авторством Id
     @RequestMapping(method=RequestMethod.GET, value="/author/{id}")
     public ModelAndView allBooksByAuthorId(ModelMap map, @PathVariable("id") Integer id) {
-        map.addAttribute("tempBook",bookService.getBooksByAuthor(authorService.getAuthorById(id)));
+        Author author = authorService.getAuthorById(id);
+        map.addAttribute("tempBook",bookService.getBooksByAuthor(author));
         map.addAttribute("title","Книги автора");
-        map.addAttribute("pageHeader","Книги за авторством: ");
+        map.addAttribute("pageHeader","Книги за авторством: " + author.getNickName());
         return new ModelAndView("BooksDisplay");
     }
 
@@ -62,7 +60,7 @@ public class BooksController {
         }
         map.addAttribute("item",book);
         map.addAttribute("title","Паспорт книги");
-        map.addAttribute("commentList",commentService.getCommentsByNote(book.getId(), noteType.book));
+        map.addAttribute("commentList",commentService.getCommentsByNote(id, noteType.book));
         map.addAttribute("newComment",new Comment());
         map.addAttribute("noteType",noteType.book);
         return new ModelAndView("BookDisplay");

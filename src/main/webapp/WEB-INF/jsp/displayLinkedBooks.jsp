@@ -19,7 +19,7 @@
                     <td><a href="http://google.com">Найти книгу</a></td>
                 </c:if>
                 <c:if test="${link.type == 'pool'}">
-                    <td><a href="http://avito.ru">Продать книгу!</a></td>
+                    <td><a href="http://avito.ru">Создать объявление на основе этой книги!</a></td>
                 </c:if>
             </tr>
         </c:forEach>

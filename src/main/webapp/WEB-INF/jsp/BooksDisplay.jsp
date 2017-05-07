@@ -8,7 +8,7 @@
 <%@include file="includes/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <body>
-<h2>${pageHeader}<h2>
+<h2>${pageHeader}</h2>
 
 <table border="1">
     <tr>

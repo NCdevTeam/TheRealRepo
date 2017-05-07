@@ -15,7 +15,7 @@
     <p>${tempAd.description}</p>
     <p>${tempAd.status}</p>
 </div>
-    <p><a href="/books/${tempAd.book.id}">Перейти на страницу книги.</a></p>
+    <p><a href="/book/${tempAd.book.id}">Перейти на страницу книги.</a></p>
 </div>
 <div>
     <h3>Ad info:</h3>
