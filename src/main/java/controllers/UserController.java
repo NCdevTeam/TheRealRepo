@@ -51,4 +51,24 @@ public class UserController {
         map.addAttribute("newUser",new User());
         return new ModelAndView("registration");
     }
+
+    //Показать список книг вошедшего в систему юзера
+    @RequestMapping(method = RequestMethod.GET,value="/library")
+    public ModelAndView displayMyBooks(ModelMap map, Principal principal) {
+        User user = userService.findUserByName(principal.getName());
+        List<Userbook> userbookList = userBookService.findUserLinksByType(user, userBookType.pool);
+        map.addAttribute("item",userbookList);
+        map.addAttribute("title","Ваш список книг");
+        return new ModelAndView("displayLinkedBooks");
+    }
+
+    //Список желаний вошедшего в систему юзера
+    @RequestMapping(method = RequestMethod.GET,value="/wishes")
+    public ModelAndView displayMyWishes(ModelMap map, Principal principal) {
+        User user = userService.findUserByName(principal.getName());
+        List<Userbook> userbookList = userBookService.findUserLinksByType(user, userBookType.wish);
+        map.addAttribute("item",userbookList);
+        map.addAttribute("title","Список желаний");
+        return new ModelAndView("displayLinkedBooks");
+    }
 }
