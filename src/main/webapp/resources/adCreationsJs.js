@@ -9,9 +9,11 @@ $(document).ready(function() {
         if(this.checked){
             $('#bookCreationDiv').show('slow');
             $('#selectBook').hide('slow');
+            $('#requireNewBookBox').val('true');
         }else{
             $('#bookCreationDiv').hide('slow');
             $('#selectBook').show('slow');
+            $('#requireNewBookBox').val('false');
         }
     });
 
@@ -19,9 +21,11 @@ $(document).ready(function() {
         if(this.checked) {
             $('#authorCreationDiv').show('slow');
             $('#selectAuthor').hide('slow');
+            $('#requireNewAuthorBox').val('true');
         }else{
             $('#authorCreationDiv').hide('slow');
             $('#selectAuthor').show('slow');
+            $('#requireNewAuthorBox').val('false');
         }
     });
 

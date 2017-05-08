@@ -1,15 +1,10 @@
 package main.java.controllers;
 
-import main.java.entities.Ad;
-import main.java.entities.Author;
-import main.java.entities.Book;
-import main.java.entities.User;
+import main.java.entities.*;
 import main.java.entities.enums.adStatus;
 import main.java.entities.enums.adType;
-import main.java.services.AdService;
-import main.java.services.AuthorService;
-import main.java.services.BookService;
-import main.java.services.UserService;
+import main.java.entities.enums.userBookType;
+import main.java.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -37,15 +32,21 @@ import main.java.entities.enums.noteType;
 public class AdController {
 
     @Autowired private AdService adService;
-    @Autowired private BookService bookService;
     @Autowired private UserService userService;
+    @Autowired private BookService bookService;
     @Autowired private AuthorService authorService;
+    @Autowired private UserBookService userBookService;
+    @Autowired private CommentService commentService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public ModelAndView AdById(ModelMap map, @PathVariable("id") Integer id) {
         Ad advert = adService.getAd(id);
         map.addAttribute("item", advert);
         map.addAttribute("title",advert.getAdvertName());
+        // comment attributes
+        map.addAttribute("commentList",commentService.getCommentsByNote(id, noteType.advert));
+        map.addAttribute("newComment", new Comment());
+        map.addAttribute("noteType",noteType.advert);
         return new ModelAndView("AdDisplay");
     }
 
@@ -55,6 +56,14 @@ public class AdController {
     public ModelAndView getAdverts(ModelMap map) {
         map.addAttribute("item",adService.getAll());
         map.addAttribute("title","Объявления");
+        return new ModelAndView("DisplayAdverts");
+    }
+
+    @RequestMapping(method=RequestMethod.GET, value="/my")
+    public ModelAndView getUserAdverts(ModelMap map, Principal principal) {
+        User user = userService.findUserByName(principal.getName());
+        map.addAttribute("item",adService.getAdsByUser(user));
+        map.addAttribute("title","Мои объявления");
         return new ModelAndView("DisplayAdverts");
     }
 
@@ -73,7 +82,6 @@ public class AdController {
         map.addAttribute("authorList",authorList);
         map.addAttribute("requireNewAuthor",false);
         map.addAttribute("newAuthor",new Author());
-        //return new ModelAndView("includes/bookCreationDiv");
         return new ModelAndView("displayAdvertCreation");
     }
 
@@ -103,6 +111,7 @@ public class AdController {
         } else {
             trueBook = bookService.getBook(bookId);
         }
+        userBookService.addLink(principal.getName(),trueBook.getId(), userBookType.pool); // Добавление книги в список книг пользователя
         advert.setBook(trueBook);
         User user = userService.findUserByName(principal.getName());
         advert.setUser(user);

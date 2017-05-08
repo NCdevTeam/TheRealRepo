@@ -49,7 +49,7 @@ public class AdsDAOImpl implements AdsDAO {
     public List<Ad> getAdsByUser(User user) throws SQLException {
         return sessionFactory
                 .getCurrentSession()
-                .createQuery("From Ad where Ad.user = :parameterId")
+                .createQuery("From Ad as advert where advert.user = :parameterId")
                 .setParameter("parameterId",user)
                 .list();
     }

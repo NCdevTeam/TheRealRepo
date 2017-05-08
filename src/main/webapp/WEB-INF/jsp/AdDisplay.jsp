@@ -7,20 +7,22 @@
 --%>
 <%@include file="includes/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
 <body>
-    <h3>${item.advertName}</h3>
-    <p>${item.advertDescription}</p>
-    <p>${item.status}</p>
-</div>
-    <p><a href="/book/${item.book.id}">Перейти на страницу книги.</a></p>
+<div>
+    <h2>Advert author</h2>
+    <h3><a href="/user/${item.user.username}">${item.user.username}</a></h3>
+    <h4>${item.user.email}</h4>
+    <h4>${item.user.phoneNumber}</h4>
 </div>
 <div>
-    <h3>Ad info:</h3>
-    <p>${item.user.username}</p>
+    <h2>Advert info:</h2>
+    <h4>Description:</h4>
+    <p>${item.advertDescription}</p>
+    <h4>Book</h4>
+    <p>Author: <a href="/author/${item.book.author.id}">${item.book.author.firstName} ${item.book.author.lastName}</a></p>
+    <p>Name: <a href="/book/${item.book.id}">${item.book.name}</a></p>
+    <p>Description: ${item.book.description}</p>
 </div>
+<%@include file="includes/commentSection.jsp"%>
 </body>
 </html>

@@ -9,6 +9,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <body>
 <div>
+    <a href="/advert/create">Создать новое объявление</a>
+    <br>
+    <br>
     <table>
         <th></th>
         <c:forEach items="${item}" var="advert">

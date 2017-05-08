@@ -71,7 +71,7 @@ public class Author {
         return nickName;
     }
 
-    public void setNickName(String nickname) {
+    public void setNickName(String nickName) {
         this.nickName = nickName;
     }
 
