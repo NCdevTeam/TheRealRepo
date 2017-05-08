@@ -5,7 +5,7 @@ package main.java.entities.enums;
  */
 
 public enum noteType {
-    ad("/ad"),
+    advert("/ad"),
     author("/author"),
     book("/book");
 

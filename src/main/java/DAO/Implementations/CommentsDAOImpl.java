@@ -44,5 +44,7 @@ public class CommentsDAOImpl implements CommentsDAO {
     @Override
     public void addComment(Comment comment) throws SQLException {
         sessionFactory.getCurrentSession().save(comment);
+        //test
+        System.out.println(comment.getId());
     }
 }

@@ -53,4 +53,13 @@ public class BookServiceImpl implements BookService{
             return bookList;
         }
     }
+
+    @Override
+    public void createBook(Book book) {
+        try{
+            booksDAO.addBook(book);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

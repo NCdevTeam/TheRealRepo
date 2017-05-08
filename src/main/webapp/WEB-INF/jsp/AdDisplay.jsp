@@ -5,21 +5,22 @@
   Time: 2:53
   To change this template use File | Settings | File Templates.
 --%>
+<%@include file="includes/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-    <h3>${tempAd.name}</h3>
-    <p>${tempAd.description}</p>
-    <p>${tempAd.status}</p>
+    <h3>${item.advertName}</h3>
+    <p>${item.advertDescription}</p>
+    <p>${item.status}</p>
 </div>
-    <p><a href="/book/${tempAd.book.id}">Перейти на страницу книги.</a></p>
+    <p><a href="/book/${item.book.id}">Перейти на страницу книги.</a></p>
 </div>
 <div>
     <h3>Ad info:</h3>
-    <p>${tempAd.user.username}</p>
+    <p>${item.user.username}</p>
 </div>
 </body>
 </html>

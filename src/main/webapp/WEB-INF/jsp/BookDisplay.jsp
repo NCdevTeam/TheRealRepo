@@ -17,7 +17,7 @@
     </div>
     <div>
         <h3>Author info:</h3>
-        <p>${item.author.name}</p>
+        <p>${item.author.firstName}</p>
         <p>${item.author.nickName}</p>
         <p>${item.author.lastName}</p>
     </div>

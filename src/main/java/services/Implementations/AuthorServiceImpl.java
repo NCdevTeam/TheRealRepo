@@ -43,4 +43,13 @@ public class AuthorServiceImpl implements AuthorService {
             return authorList;
         }
     }
+
+    @Override
+    public void createNewAuthor(Author author) {
+        try {
+            authorsDAO.addAuthor(author);
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

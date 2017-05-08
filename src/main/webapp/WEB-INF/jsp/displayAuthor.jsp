@@ -9,9 +9,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <body>
 <div>
-    <h3>${item.name} ${item.lastName}</h3>
+    <h3>${item.firstName} ${item.lastName}</h3>
     <h4>${item.nickName}</h4>
-    <p>${item.description}</p>
+    <p>${item.authorDescription}</p>
     <a href="/book/author/${item.id}">Посмотреть книги этого автора.</a>
 </div>
 <div>

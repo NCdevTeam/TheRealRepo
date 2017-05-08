@@ -23,16 +23,53 @@ public class AdServiceImpl implements AdService {
     @Autowired
     private AdsDAO adsDAO;
 
-    public List<Ad> getAll() throws SQLException{
-        return adsDAO.getAllAds();
+    public List<Ad> getAll(){
+        List<Ad> adList = null;
+        try {
+            adList = adsDAO.getAllAds();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return adList;
+        }
     }
-    public Ad getAd(Integer id) throws SQLException{
-        return adsDAO.getAdById(id);
+    public Ad getAd(Integer id){
+        Ad ad = null;
+        try {
+            ad = adsDAO.getAdById(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return ad;
+        }
     }
-    public List<Ad> getAdsByBook(Book book) throws SQLException{
-        return adsDAO.getAdsByBook(book);
+    public List<Ad> getAdsByBook(Book book){
+        List<Ad> adList = null;
+        try {
+            adList = adsDAO.getAdsByBook(book);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return adList;
+        }
     }
-    public List<Ad> getAdsByUser(User user) throws SQLException{
-        return adsDAO.getAdsByUser(user);
+    public List<Ad> getAdsByUser(User user) {
+        List<Ad> adList = null;
+        try {
+            adList = adsDAO.getAdsByUser(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return adList;
+        }
+    }
+
+    @Override
+    public void createAdvert(Ad advert) {
+        try{
+            adsDAO.addAd(advert);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

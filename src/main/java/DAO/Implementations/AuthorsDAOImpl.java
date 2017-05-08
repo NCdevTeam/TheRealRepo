@@ -25,6 +25,8 @@ public class AuthorsDAOImpl implements AuthorsDAO {
 
     public void addAuthor(Author author) throws SQLException{
         sessionFactory.getCurrentSession().save(author);
+        //test
+        System.out.println(author.getId());
     }
 
     public void updateAuthor(Author author) throws SQLException{

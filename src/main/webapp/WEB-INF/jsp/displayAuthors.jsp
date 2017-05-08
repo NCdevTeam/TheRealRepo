@@ -21,7 +21,7 @@
         </tr>
         <c:forEach items="${item}" var="author">
             <tr>
-                <td>${author.name}</td>
+                <td>${author.firstName}</td>
                 <td>${author.nickName}</td>
                 <td>${author.lastName}</td>
                 <td><a href="/author/${author.id}">Страница автора</a></td>

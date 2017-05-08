@@ -29,6 +29,8 @@ public class BooksDAOImpl implements BooksDAO {
 
     public void addBook(Book book) throws SQLException {
         sessionFactory.getCurrentSession().save(book);
+        //test
+        System.out.println(book.getId());
     }
 
     public void updateBook(Book book) throws SQLException {

@@ -20,4 +20,5 @@ public interface BookService {
     public List<Book> getAll();
     public Book getBook(Integer Id);
     public List<Book> getBooksByAuthor(Author author);
+    public void createBook(Book book);
 }

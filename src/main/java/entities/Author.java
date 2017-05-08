@@ -21,7 +21,7 @@ public class Author {
     private Integer id;
 
     @Column (name = "name")
-    private String name;
+    private String firstName;
 
     @Column (name = "lastName")
     private String lastName;
@@ -30,7 +30,7 @@ public class Author {
     private String nickName;
 
     @Column (name = "description")
-    private String description;
+    private String authorDescription;
 
     @Column (name="photoURL")
     private String photoURL;
@@ -59,12 +59,12 @@ public class Author {
         this.lastName = lastName;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String name) {
+        this.firstName = name;
     }
 
     public String getNickName() {
@@ -75,11 +75,11 @@ public class Author {
         this.nickName = nickName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAuthorDescription() {
+        return authorDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAuthorDescription(String description) {
+        this.authorDescription = description;
     }
 }

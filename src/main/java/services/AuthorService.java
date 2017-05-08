@@ -11,4 +11,5 @@ import java.util.List;
 public interface AuthorService {
     public Author getAuthorById(Integer authorId);
     public List<Author> getAllAuthors();
+    public void createNewAuthor(Author author);
 }

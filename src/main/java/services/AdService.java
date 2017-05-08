@@ -9,8 +9,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface AdService {
-    public List<Ad> getAll() throws SQLException;
-    public Ad getAd(Integer id) throws SQLException;
-    public List<Ad> getAdsByBook(Book book) throws SQLException;
-    public List<Ad> getAdsByUser(User user) throws SQLException;
+    public List<Ad> getAll();
+    public Ad getAd(Integer id);
+    public List<Ad> getAdsByBook(Book book);
+    public List<Ad> getAdsByUser(User user);
+    public void createAdvert(Ad advert);
 }

@@ -18,10 +18,10 @@ public class Ad {
     private Integer id;
 
     @Column(name = "name")
-    private String name;
+    private String advertName;
 
     @Column(name = "description")
-    private String description;
+    private String advertDescription;
 
     @ManyToOne
     @JoinColumn(name = "userID")
@@ -47,12 +47,12 @@ public class Ad {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getAdvertName() {
+        return advertName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAdvertDescription() {
+        return advertDescription;
     }
 
     public User getUser() {
@@ -81,12 +81,12 @@ public class Ad {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAdvertName(String advertName) {
+        this.advertName = advertName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAdvertDescription(String description) {
+        this.advertDescription = description;
     }
 
     public void setUser(User user) {
