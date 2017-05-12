@@ -6,10 +6,9 @@
   Time: 16:13
   To change this template use File | Settings | File Templates.
 --%>
-<script type="text/javascript" src="/resources/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="/resources/adCreationsJs.js"></script>
 <%@include file="includes/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script type="text/javascript" src="/resources/adCreationsJs.js"></script>
 <body>
 <div>
     <form:form method="post" modelAttribute="newAdvert" action="/advert/create">

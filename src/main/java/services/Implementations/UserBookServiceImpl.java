@@ -99,4 +99,25 @@ public class UserBookServiceImpl implements UserBookService {
 //        }
 //        return false;
     }
+
+    @Override
+    public Userbook findLink(User user, Book book, userBookType type) {
+        Userbook userbook = null;
+        try {
+            userbook = userBooksDAO.findLink(user,book,type);
+        } catch(SQLException e ){
+            e.printStackTrace();
+        } finally {
+            return userbook;
+        }
+    }
+
+    @Override
+    public void updateLink(Userbook link) {
+        try {
+            userBooksDAO.updateLink(link);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

@@ -56,4 +56,13 @@ public class BooksDAOImpl implements BooksDAO {
                 .setParameter("parameterId",author)
                 .list();
     }
+
+    @Override
+    public List<Book> searchLikeBookName(String likeString) throws SQLException {
+        return sessionFactory
+                .getCurrentSession()
+                .createQuery("From Book as bk where bk.name like :param")
+                .setParameter("param","%"+likeString+"%")
+                .list();
+    }
 }

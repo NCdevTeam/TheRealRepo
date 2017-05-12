@@ -57,8 +57,17 @@ public class AdsDAOImpl implements AdsDAO {
     public List<Ad> getAdsByBook(Book book) throws SQLException {
         return sessionFactory
                 .getCurrentSession()
-                .createQuery("From Ad where Ad.book = :parameterId")
+                .createQuery("From Ad as advert where advert.book = :parameterId")
                 .setParameter("parameterId",book)
+                .list();
+    }
+
+    @Override
+    public List<Ad> searchAdsByName(String searchString) throws SQLException {
+        return sessionFactory
+                .getCurrentSession()
+                .createQuery("From Ad as advert where advert.advertName like :searchString")
+                .setParameter("searchString","%"+searchString+"%")
                 .list();
     }
 }

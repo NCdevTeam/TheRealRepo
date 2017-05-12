@@ -29,8 +29,8 @@ public class MessageServiceImpl implements MessageService {
     public void addMessage(Message message) {
         try {
             message.setMsgDateTime(new Date());
-            byte[] ptext = message.getText().getBytes(Charset.forName("ISO-8859-1"));
-            message.setText(new String(ptext, Charset.forName("UTF-8")));
+//            byte[] ptext = message.getText().getBytes(Charset.forName("ISO-8859-1"));
+//            message.setText(new String(ptext, Charset.forName("UTF-8")));
             msgDao.addMessage(message);
         } catch (SQLException e) {
             e.printStackTrace();

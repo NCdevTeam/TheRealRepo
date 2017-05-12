@@ -21,4 +21,5 @@ public interface BookService {
     public Book getBook(Integer Id);
     public List<Book> getBooksByAuthor(Author author);
     public void createBook(Book book);
+    public List<Book> searchLikeBookName(String searchString);
 }

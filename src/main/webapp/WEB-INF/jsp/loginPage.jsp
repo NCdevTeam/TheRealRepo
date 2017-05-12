@@ -12,7 +12,7 @@
 <body>
     <c:url value="../login" var="LoginProcessingUrl" />
 <form action ="${loginProcessingUrl}" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <input style="display:none;" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <fieldset>
         <legend> Пожалуйста, войдите </legend>
         <c:if test="${param.error != null}">

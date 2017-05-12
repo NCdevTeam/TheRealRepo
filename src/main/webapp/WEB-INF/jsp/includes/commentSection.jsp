@@ -1,7 +1,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<br>
+<br>
 <div>
-    <p>Comment section below</p>
+    <h3>Comment section below</h3>
     <table>
         <tr>
             <th>Автор</th>

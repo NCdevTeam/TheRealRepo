@@ -7,25 +7,26 @@
 --%>
 <%@include file="includes/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<body>
-<h2>${pageHeader}</h2>
-
-<table border="1">
-    <tr>
-        <th>Book Id</th>
-        <th>Book Name</th>
-        <th>Book description Name</th>
-        <th>Book author</th>
-    </tr>
-    <c:forEach items="${tempBook}" var="bk">
-        <tr>
-            <td>${bk.id}</td>
-            <td><a href="/book/${bk.id}">${bk.name}</a></td>
-            <td>${bk.description}</td>
-            <td>${bk.author.nickName}</td>
-        </tr>
-    </c:forEach>
-</table>
-
-</body>
-</html>
+<content>
+    <div class="content">
+        <h1>${pageHeader}</h1>
+        <c:forEach items="${tempBook}" var="book">
+            <div class="my__book">
+                <div class="my__book__img">
+                    <img src="${book.imageUrl}" width="200px" height="200px" alt="${book.name}">
+                </div>
+                <div class="my__book__list">
+                    <ul>
+                        <li class="book__name"><a href="/book/${book.id}"> ${book.name}</a></li>
+                        <li class="book__author"><a href="/author/${book.author.id}">${book.author.firstName} ${book.author.lastName}</a></li>
+                        <li class="book__text">${book.description}</li>
+                    </ul>
+                </div>
+                <div class="my__block__buttons">
+                    <a href="/book/${book.id}"><button class="button__read">Больше.</button></a>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+</content>
+<%@include file="includes/footer.jsp"%>

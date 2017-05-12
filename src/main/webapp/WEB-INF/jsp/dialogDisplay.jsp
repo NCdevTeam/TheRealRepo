@@ -9,32 +9,24 @@
 
 <%@include file="includes/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%request.setCharacterEncoding("UTF-8");%>
-<body>
-<div>
-    <table>
-        <tr>
-            <td>Кто</td>
-            <td>Что</td>
-            <td>Когда</td>
-        </tr>
-        <c:forEach items="${item}" var="msg" >
-            <tr>
-                <td>${msg.sender.username}</td>
-                <td>${msg.text}</td>
-                <td>${msg.msgDateTime}</td>
-            </tr>
-        </c:forEach>
-    </table>
-</div>
-<div>
-    Send new message:
-    <sec:authorize access="isAuthenticated()">
-        <form:form method="post" modelAttribute="newMessage" action="/dialog/${receiver.username}/send">
-            <form:input path="text" type="textarea" id="msgText" placeholder="enter message..."/>
-            <button type="submit">Send</button>
-        </form:form>
-    </sec:authorize>
-</div>
-</body>
-</html>
+<%response.setCharacterEncoding("UTF-8");%>
+<content>
+    <div class="content">
+        <div class="block__chat">
+            <div class="box__nav">
+                <button class="button__back">Назад</button>
+                <a href="/user/${receiver.username}"><div class="user__name">${receiver.username}</div></a>
+            </div>
+            <div class="box__chat">
+                <c:forEach items="${item}" var="msg">
+                    <p><${msg.msgDateTime}> ${msg.sender.username}: ${msg.text}</p>
+                </c:forEach>
+            </div>
+            <form:form action="/dialog/${receiver.username}/send" class="box__buttons" method="post">
+                <input name="text" class="input__mess" type="text">
+                <button type="submit" class="button__go">Отправить</button>
+            </form:form>
+        </div>
+    </div>
+</content>
+<%@include file="includes/footer.jsp"%>

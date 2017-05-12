@@ -85,24 +85,20 @@ public class AdController {
         return new ModelAndView("displayAdvertCreation");
     }
 
-    @RequestMapping(method=RequestMethod.POST,value = "/create")
-    public String createAdvert(ModelMap map, Principal principal,
-                               @ModelAttribute("newAdvert")Ad advert,
-                               @ModelAttribute("bookId")Integer bookId,
-                               @ModelAttribute("authorId")Integer authorId,
-                               @ModelAttribute("requireNewBook")String requireNewBookStr,
-                               @ModelAttribute("newBook")Book book,
-                               @ModelAttribute("requireNewAuthor")String requireNewAuthorStr,
-                               @ModelAttribute("newAuthor")Author author) {
+    private Book createOrSelectBookWithAuthor(Integer bookId,
+                                              Integer authorId,
+                                              Boolean reqNewBook,
+                                              Boolean reqNewAuthor,
+                                              Book book,
+                                              Author author,
+                                              Principal principal) {
         Book trueBook;
         Author trueAuthor;
-        Boolean requireNewBook = Boolean.valueOf(requireNewBookStr);
-        Boolean requireNewAuthor = Boolean.valueOf(requireNewAuthorStr);
-        if(requireNewBook){
-            if(requireNewAuthor) {
+        if(reqNewBook){
+            if(reqNewAuthor){
                 trueAuthor = author;
                 authorService.createNewAuthor(trueAuthor);
-            }else {
+            }else{
                 trueAuthor = authorService.getAuthorById(authorId);
             }
             trueBook = book;
@@ -112,11 +108,46 @@ public class AdController {
             trueBook = bookService.getBook(bookId);
         }
         userBookService.addLink(principal.getName(),trueBook.getId(), userBookType.pool); // Добавление книги в список книг пользователя
+        return trueBook;
+    }
+
+    @RequestMapping(method=RequestMethod.POST,value = "/create")
+    public String createAdvert(ModelMap map, Principal principal,
+                               @ModelAttribute("newAdvert")Ad advert,
+                               @ModelAttribute("bookId")Integer bookId,
+                               @ModelAttribute("authorId")Integer authorId,
+                               @ModelAttribute("requireNewBook")String requireNewBookStr,
+                               @ModelAttribute("newBook")Book book,
+                               @ModelAttribute("requireNewAuthor")String requireNewAuthorStr,
+                               @ModelAttribute("newAuthor")Author author) {
+        Book trueBook = createOrSelectBookWithAuthor(bookId,
+                authorId,
+                Boolean.valueOf(requireNewBookStr),
+                Boolean.valueOf(requireNewAuthorStr),
+                book,
+                author,
+                principal);
         advert.setBook(trueBook);
         User user = userService.findUserByName(principal.getName());
         advert.setUser(user);
         advert.setStatus(adStatus.moderate);
         adService.createAdvert(advert);
         return "redirect:/advert";
+    }
+
+    @RequestMapping(method=RequestMethod.GET,value="/book/{id}")
+    public ModelAndView findAdByBookId(ModelMap map, @PathVariable("id")Integer bookId){
+        Book book = bookService.getBook(bookId);
+        List<Ad> adList = adService.getAdsByBook(book);
+        map.addAttribute("item",adList);
+        map.addAttribute("pageHeader","Найденные объявления для книги "+book.getName());
+        return new ModelAndView("DisplayAdverts");
+    }
+
+    @RequestMapping(method=RequestMethod.POST,value="/buy/{id}")
+    public String buyAdBook(ModelMap map, @PathVariable("id")Integer advertId, Principal principal){
+        Ad advert = adService.getAd(advertId);
+        adService.bookBuy(advert,principal);
+        return "redirect:/library";
     }
 }

@@ -19,4 +19,5 @@ public interface AdsDAO {
     public void deleteAd(Ad advert) throws SQLException;
     public List<Ad> getAdsByUser(User user) throws SQLException;
     public List<Ad> getAdsByBook(Book book) throws SQLException;
+    public List<Ad> searchAdsByName(String searchString) throws SQLException;
 }

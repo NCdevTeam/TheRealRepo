@@ -7,15 +7,26 @@
 --%>
 <%@include file="includes/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<body>
-<div>
-    <table>
-        <c:forEach items="${item}" var="usr">
-            <tr>
-                <td><a href="/dialog/${usr.username}">${usr.username}</a></td>
-            </tr>
-        </c:forEach>
-    </table>
-</div>
-</body>
-</html>
+<content>
+    <div class="content">
+        <div class="block__chat">
+            <c:forEach items="${item}" var="dialog">
+                <a href="/dialog/${dialog.username}">
+                    <div class="chat__line">
+                        <div class="chat__text">
+                            <div class="user__name">
+                                ${dialog.username}
+                            </div>
+                            <div class="chat__mess">
+                                Последнее сообщение
+                            </div>
+                        </div>
+                        <div class="user__color"><!--Рандомный цвет-->
+                        </div>
+                    </div>
+                </a>
+            </c:forEach>
+        </div>
+    </div>
+</content>
+<%@include file="includes/footer.jsp"%>

@@ -17,4 +17,5 @@ public interface BooksDAO {
     public List<Book> getAllBooks() throws SQLException;
     public void deleteBook(Book book) throws SQLException;
     public List<Book> getBooksByAuthor(Author author) throws SQLException;
+    public List<Book> searchLikeBookName(String likeString) throws SQLException;
 }

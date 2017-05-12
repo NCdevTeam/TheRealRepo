@@ -57,4 +57,20 @@ public class UserbooksDAOImpl implements UserbooksDAO {
         return temp.get(0);
 
     }
+
+    @Override
+    public Userbook findLink(User user, Book book, userBookType type) throws SQLException {
+        List<Userbook> userbookList = sessionFactory.getCurrentSession()
+                .createQuery("From Userbook as ub where ub.user = :parUser and ub.book = :parBook and ub.type = :parType")
+                .setParameter("parUser",user)
+                .setParameter("parBook",book)
+                .setParameter("parType",type)
+                .list();
+        return userbookList.get(0);
+    }
+
+    @Override
+    public void updateLink(Userbook link) throws SQLException {
+        sessionFactory.getCurrentSession().update(link);
+    }
 }

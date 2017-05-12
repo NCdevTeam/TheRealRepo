@@ -62,4 +62,16 @@ public class BookServiceImpl implements BookService{
             e.printStackTrace();
         }
     }
+
+    @Override
+    public List<Book> searchLikeBookName(String searchString) {
+        List<Book> bookList=null;
+        try{
+            bookList = booksDAO.searchLikeBookName(searchString);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return bookList;
+        }
+    }
 }

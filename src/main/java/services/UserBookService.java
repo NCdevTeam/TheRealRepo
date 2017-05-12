@@ -15,4 +15,6 @@ public interface UserBookService {
     public void deleteLink(String username, Integer bookId, userBookType type);
     public List<Userbook> findUserLinksByType(User user, userBookType type);
     public Boolean isLinked(String username, Integer bookId, userBookType linkType);
+    public Userbook findLink(User user, Book book, userBookType type);
+    public void updateLink(Userbook link);
 }

@@ -16,4 +16,6 @@ public interface UserbooksDAO {
     public void deleteUserBookLink(Userbook userbook) throws SQLException;
     public List<Userbook> findUserBookLinksByType(User user,userBookType type) throws SQLException;
     public Userbook selectLink(Userbook buildedLink) throws SQLException;
+    public Userbook findLink(User user, Book book, userBookType type) throws SQLException;
+    public void updateLink(Userbook link) throws SQLException;
 }

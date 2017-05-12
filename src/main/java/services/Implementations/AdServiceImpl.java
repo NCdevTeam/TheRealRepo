@@ -4,11 +4,16 @@ import main.java.DAO.AdsDAO;
 import main.java.entities.Ad;
 import main.java.entities.Book;
 import main.java.entities.User;
+import main.java.entities.Userbook;
+import main.java.entities.enums.userBookType;
 import main.java.services.AdService;
+import main.java.services.UserBookService;
+import main.java.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -22,6 +27,12 @@ public class AdServiceImpl implements AdService {
 
     @Autowired
     private AdsDAO adsDAO;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserBookService userBookService;
 
     public List<Ad> getAll(){
         List<Ad> adList = null;
@@ -71,5 +82,27 @@ public class AdServiceImpl implements AdService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<Ad> searchAdvertsByName(String searchString) {
+        List<Ad> adList = null;
+        try{
+            adList=adsDAO.searchAdsByName(searchString);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            return adList;
+        }
+    }
+
+    @Override
+    public void bookBuy(Ad advert, Principal principal) {
+        User seller = advert.getUser();
+        User customer = userService.findUserByName(principal.getName());
+        Book book = advert.getBook();
+        Userbook link = userBookService.findLink(seller,book, userBookType.pool);
+        link.setUser(customer);
+        userBookService.updateLink(link);
     }
 }

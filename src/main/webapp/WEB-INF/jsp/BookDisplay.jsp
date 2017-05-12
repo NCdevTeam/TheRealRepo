@@ -26,18 +26,18 @@
             <c:choose>
                 <c:when test="${!hasWish}">
                     <div>
-                        <a href="/book/wish/${item.id}">I wish this book was MINE!</a>
+                        <a href="/book/wish/${item.id}">Добавить в список желаемых</a>
                     </div>
                 </c:when>
                 <c:otherwise>
                     <div>
                         <p>In ur wish pool</p>
-                        <a href="/book/deleteWish/${item.id}">Delete from my wish list... meh..</a>
+                        <a href="/book/deleteWish/${item.id}">Удалить из списка желаемых</a>
                     </div>
                 </c:otherwise>
             </c:choose>
             <div>
-                <a href="http://google.com">Find ad with this book!</a>
+                <a href="/advert/book/${item.id}">Найти объявления с этой книгой</a>
             </div>
         </c:if>
 
