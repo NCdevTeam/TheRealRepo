@@ -14,7 +14,7 @@
     <div class="content">
         <div class="block__chat">
             <div class="box__nav">
-                <button class="button__back">Назад</button>
+                <a href="/dialog"><button class="button__back">Back</button></a>
                 <a href="/user/${receiver.username}"><div class="user__name">${receiver.username}</div></a>
             </div>
             <div class="box__chat">
@@ -24,7 +24,7 @@
             </div>
             <form:form action="/dialog/${receiver.username}/send" class="box__buttons" method="post">
                 <input name="text" class="input__mess" type="text">
-                <button type="submit" class="button__go">Отправить</button>
+                <button type="submit" class="button__go">Send</button>
             </form:form>
         </div>
     </div>

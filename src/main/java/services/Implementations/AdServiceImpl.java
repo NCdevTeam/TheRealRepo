@@ -5,6 +5,7 @@ import main.java.entities.Ad;
 import main.java.entities.Book;
 import main.java.entities.User;
 import main.java.entities.Userbook;
+import main.java.entities.enums.adStatus;
 import main.java.entities.enums.userBookType;
 import main.java.services.AdService;
 import main.java.services.UserBookService;
@@ -103,6 +104,24 @@ public class AdServiceImpl implements AdService {
         Book book = advert.getBook();
         Userbook link = userBookService.findLink(seller,book, userBookType.pool);
         link.setUser(customer);
-        userBookService.updateLink(link);
+        advert.setStatus(adStatus.inactive);
+        try {
+            adsDAO.updateAd(advert);
+            userBookService.updateLink(link);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List<Ad> getAdsByStatus(adStatus status) {
+        List<Ad> adList=null;
+        try{
+            adList = adsDAO.getAllAdsByStatus(status);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            return adList;
+        }
     }
 }

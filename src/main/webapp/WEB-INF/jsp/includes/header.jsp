@@ -29,29 +29,29 @@
             </div>
             <nav class="menu">
                 <ul class="nav__ul">
-                    <li><a id="searchRef" href="#">Найти</a>
+                    <li><a id="searchRef" href="#">Search</a>
 
                         <ul>
-                            <li><input id="searchIn" class="search" type="text" placeholder="Поиск в каталоге..."></li>
+                            <li><input id="searchIn" class="search" type="text" placeholder="Search in catalog..."></li>
                         </ul>
 
                     </li>
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/advert">Объявления</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/advert">Adverts</a></li>
                     <%--<li><a href="/book">Книги</a></li>--%>
                     <%--<li><a href="/author">Авторы</a></li>--%>
                     <sec:authorize access="isAnonymous()">
-                        <li><a href="/registration">Регистрация</a></li>
-                        <li><a href="#">Войти</a>
+                        <li><a href="/registration">Registration</a></li>
+                        <li><a href="#">Login</a>
                             <form action ="/login" method="post">
                                 <input style="display:none;" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                 <ul nav__ul><!--блок входа-------------->
                                     <li>
                                         <div class="block__log">
-                                            <input name="username" class="log__inp" type="text" placeholder="Логин">
-                                            <input name="password" class="log__inp" type="password" placeholder="Пароль">
-                                            <button type="submit" class="log__but">Войти</button>
-                                            <div class="log__string"><a href="#">Забыли пароль?</a></div>
+                                            <input name="username" class="log__inp" type="text" placeholder="Login">
+                                            <input name="password" class="log__inp" type="password" placeholder="Password">
+                                            <button type="submit" class="log__but">Login</button>
+                                            <div class="log__string"><a href="#">Forgot your password?</a></div>
                                         </div>
                                     </li>
                                     <li>
@@ -69,14 +69,14 @@
                         </li>
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
-                        <li><a href="#"> мой Профиль</a>
+                        <li><a href="#">Menu</a>
                             <ul class="my__profile">
                                 <li class="menu__nickname"><a href="/user/<sec:authentication property="principal.username"/>"><sec:authentication property="principal.username"/></a></li>
-                                <li><a href="/library">Мои книги</a></li>
-                                <li><a href="/wishes">Мои желания</a></li>
-                                <li><a href="/advert/my">Мои объявления</a></li>
-                                <li><a href="/dialog">Диалоги</a></li>
-                                <li><a href="/logout">Выйти</a></li>
+                                <li><a href="/library">My books</a></li>
+                                <li><a href="/wishes">My wishes</a></li>
+                                <li><a href="/advert/my">My adverts</a></li>
+                                <li><a href="/dialog">Dialogs</a></li>
+                                <li><a href="/logout">Logout</a></li>
                             </ul>
                         </li>
                     </sec:authorize>

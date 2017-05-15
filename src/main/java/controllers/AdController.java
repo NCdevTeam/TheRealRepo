@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import main.java.entities.enums.noteType;
@@ -54,7 +55,7 @@ public class AdController {
 
     @RequestMapping(method=RequestMethod.GET)
     public ModelAndView getAdverts(ModelMap map) {
-        map.addAttribute("item",adService.getAll());
+        map.addAttribute("item",adService.getAdsByStatus(adStatus.active));
         map.addAttribute("title","Объявления");
         return new ModelAndView("DisplayAdverts");
     }
@@ -69,7 +70,11 @@ public class AdController {
 
     @RequestMapping(method=RequestMethod.GET, value="/create")
     public ModelAndView createAdvert(ModelMap map, Principal principal) {
-        List<Book> bookList = bookService.getAll();
+        List<Userbook> userbookList = userBookService.findUserLinksByType(userService.findUserByName(principal.getName()),userBookType.pool);
+        List<Book> bookList = new ArrayList<Book>();
+        for(Userbook link : userbookList){
+            bookList.add(link.getBook());
+        }
         List<Author> authorList = authorService.getAllAuthors();
         map.addAttribute("title","Создание объявления");
         map.addAttribute("newAdvert", new Ad());
@@ -107,7 +112,8 @@ public class AdController {
         } else {
             trueBook = bookService.getBook(bookId);
         }
-        userBookService.addLink(principal.getName(),trueBook.getId(), userBookType.pool); // Добавление книги в список книг пользователя
+        if(reqNewBook)
+            userBookService.addLink(principal.getName(),trueBook.getId(), userBookType.pool); // Добавление книги в список книг пользователя
         return trueBook;
     }
 
@@ -130,7 +136,7 @@ public class AdController {
         advert.setBook(trueBook);
         User user = userService.findUserByName(principal.getName());
         advert.setUser(user);
-        advert.setStatus(adStatus.moderate);
+        advert.setStatus(adStatus.active);
         adService.createAdvert(advert);
         return "redirect:/advert";
     }
@@ -144,7 +150,7 @@ public class AdController {
         return new ModelAndView("DisplayAdverts");
     }
 
-    @RequestMapping(method=RequestMethod.POST,value="/buy/{id}")
+    @RequestMapping(method=RequestMethod.GET,value="/buy/{id}")
     public String buyAdBook(ModelMap map, @PathVariable("id")Integer advertId, Principal principal){
         Ad advert = adService.getAd(advertId);
         adService.bookBuy(advert,principal);

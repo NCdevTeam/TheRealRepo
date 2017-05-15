@@ -13,7 +13,7 @@
         <c:forEach items="${tempBook}" var="book">
             <div class="my__book">
                 <div class="my__book__img">
-                    <img src="${book.imageUrl}" width="200px" height="200px" alt="${book.name}">
+                    <img src="${book.imageURL}" width="200px" height="200px" alt="${book.name}">
                 </div>
                 <div class="my__book__list">
                     <ul>

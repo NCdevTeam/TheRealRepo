@@ -62,11 +62,11 @@ public class Book {
         this.description = description;
     }
 
-    public String getImageUrl() {
+    public String getImageURL() {
         return imageURL;
     }
 
-    public void setImageUrl(String imageURL) {
+    public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
 

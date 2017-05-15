@@ -14,6 +14,10 @@ $(document).ready(function() {
             $('#bookCreationDiv').hide('slow');
             $('#selectBook').show('slow');
             $('#requireNewBookBox').val('false');
+            $('#requireNewAuthorBox').prop('checked',false);
+            $('#authorCreationDiv').hide('slow');
+            $('#selectAuthor').show('slow');
+            $('#requireNewAuthorBox').val('false');
         }
     });
 

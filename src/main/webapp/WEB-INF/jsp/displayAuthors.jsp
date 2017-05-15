@@ -8,28 +8,25 @@
 <%@include file="includes/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link href="/resources/authorCreation.css" rel="stylesheet"/>
-<body>
-<div>
-    <table>
-        <tr>
-            <th>Имя</th>
-            <th>Псевданим</th>
-            <th>Фамилия</th>
-            <th>Страница автора</th>
-            <th>Произведения</th>
-            <th>Фото</th>
-        </tr>
-        <c:forEach items="${item}" var="author">
-            <tr>
-                <td>${author.firstName}</td>
-                <td>${author.nickName}</td>
-                <td>${author.lastName}</td>
-                <td><a href="/author/${author.id}">Страница автора</a></td>
-                <td><a href="/book/author/${author.id}">Книги автора</a></td>
-                <td><img id="AuthorPhoto" src="${author.photoURL}"></td>
-            </tr>
-        </c:forEach>
-    </table>
-</div>
-</body>
-</html>
+<content>
+    <div class="content">
+        <div class="author__list">
+            <h2>Author list</h2>
+                <c:forEach items="${item}" var="author">
+                    <div class="block__authors">
+                        <div class="authors__img">
+                            <img src="${author.photoURL}" alt="${author.firstName}_${author.lastName}">
+                        </div>
+                        <div class="authors__name">
+                            <span>${author.firstName} ${author.lastName}</span>
+                        </div>
+                        <a href="/author/${author.id}"><button>About</button></a>
+                    </div>
+                </c:forEach>
+        </div>
+
+
+
+    </div>
+</content>
+<%@include file="includes/footer.jsp"%>

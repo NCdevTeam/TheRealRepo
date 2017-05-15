@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 import main.java.DAO.AdsDAO;
+import main.java.entities.enums.adStatus;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -69,5 +70,11 @@ public class AdsDAOImpl implements AdsDAO {
                 .createQuery("From Ad as advert where advert.advertName like :searchString")
                 .setParameter("searchString","%"+searchString+"%")
                 .list();
+    }
+
+    @Override
+    public List<Ad> getAllAdsByStatus(adStatus status) throws SQLException {
+        return sessionFactory.getCurrentSession().createQuery("From Ad as advert where advert.status = :parameterStatus")
+                .setParameter("parameterStatus",status).list();
     }
 }

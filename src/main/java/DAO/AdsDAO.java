@@ -6,6 +6,7 @@ package main.java.DAO;
 import main.java.entities.Ad;
 import main.java.entities.Book;
 import main.java.entities.User;
+import main.java.entities.enums.adStatus;
 
 import java.util.Collection;
 import java.sql.SQLException;
@@ -20,4 +21,5 @@ public interface AdsDAO {
     public List<Ad> getAdsByUser(User user) throws SQLException;
     public List<Ad> getAdsByBook(Book book) throws SQLException;
     public List<Ad> searchAdsByName(String searchString) throws SQLException;
+    public List<Ad> getAllAdsByStatus(adStatus status) throws SQLException;
 }

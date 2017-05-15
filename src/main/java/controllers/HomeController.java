@@ -3,6 +3,7 @@ package main.java.controllers;
 import com.sun.org.apache.regexp.internal.RE;
 import main.java.entities.Ad;
 import main.java.entities.Book;
+import main.java.entities.enums.adStatus;
 import main.java.services.AdService;
 import main.java.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,7 @@ public class HomeController {
     @RequestMapping(method= RequestMethod.GET,value="/")
     public ModelAndView home(ModelMap map){
         map.addAttribute("title","Добро пожаловать!");
+        map.addAttribute("item",adService.getAdsByStatus(adStatus.active));
         return new ModelAndView("index");
     }
 

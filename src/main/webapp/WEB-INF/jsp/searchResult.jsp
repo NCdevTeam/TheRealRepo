@@ -16,11 +16,11 @@
                         <%--<div class="block__ad_name">${advert.advertName}</div>--%>
                     <div class="block__name">${advert.book.name}</div>
                     <div class="block__img">
-                        <img src="${advert.book.imageUrl}" width="280" height="200" alt="">
+                        <img src="${advert.book.imageURL}" width="280" height="200" alt="">
                     </div>
                     <div class="block__go">
-                        <span class="price">${advert.price} рублей</span>
-                        <a href="/advert/${advert.id}"><button class="go__button">ПЕРЕЙТИ</button></a>
+                        <span class="price">${advert.price} $</span>
+                        <a href="/advert/${advert.id}"><button class="go__button">Go</button></a>
                     </div>
                 </div>
             </c:forEach>
@@ -30,7 +30,7 @@
             <c:forEach items="${bookList}" var="book">
                 <div class="my__book">
                     <div class="my__book__img">
-                        <img src="${book.imageUrl}" width="200px" height="200px" alt="${book.name}">
+                        <img src="${book.imageURL}" width="200px" height="200px" alt="${book.name}">
                     </div>
                     <div class="my__book__list">
                         <ul>

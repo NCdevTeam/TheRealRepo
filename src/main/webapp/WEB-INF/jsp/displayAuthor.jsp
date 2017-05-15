@@ -7,16 +7,34 @@
 --%>
 <%@include file="includes/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<body>
-<div>
-    <h3>${item.firstName} ${item.lastName}</h3>
-    <h4>${item.nickName}</h4>
-    <p>${item.authorDescription}</p>
-    <a href="/book/author/${item.id}">Посмотреть книги этого автора.</a>
-</div>
-<div>
-    <img src="${item.photoURL}">
-</div>
+<content>
+    <div class="content">
+
+        <div class="inf__author__img">
+            <img src="${item.photoURL}" alt="">
+        </div>
+
+        <div class="list__author__inf">
+            <ul class="author__inf__list">
+                <li><span>${item.firstName} ${item.lastName}</span></li>
+                <li><span>Nickname: </span>Shmele</li>
+                <li><span>Birthday: </span>Someday.</li>
+                <li><span>City: </span>Berlin</li>
+                <li><span>Language: <span>Берлинский</li>
+                <li><span>Ganre: </span>В берлинском</li>
+                <li><span>${item.authorDescription}</span></li>
+            </ul>
+        </div>
+
+        <div class="list__author__books">
+            <h2>Bibliography</h2>
+            <ul>
+                <li><a href="/book/author/${item.id}">Show author books</a></li>
+            </ul>
+        </div>
+    </div>
+
+</content>
+
 <%@include file="includes/commentSection.jsp"%>
-</body>
-</html>
+<%@include file="includes/footer.jsp"%>

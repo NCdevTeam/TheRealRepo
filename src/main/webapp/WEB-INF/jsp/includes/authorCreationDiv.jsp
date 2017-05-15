@@ -7,16 +7,13 @@
 --%>
 <link href="/resources/authorCreationDiv.css" rel="stylesheet"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div id="authorCreationDiv">
-    <p>Введите информацию о авторе:</p>
-    <p>Имя:</p>
-    <input type="text" name="firstName"/>
-    <p>Фамилия:</p>
-    <input type="text" name="lastName"/>
-    <p>Псевдоним</p>
-    <input type="text" name="nickName"/>
-    <p>Краткое описание:</p>
-    <input type="text" name="authorDescription"/>
-    <p>Ссылка на фоточку, шоб на ней красоточка</p>
-    <input type="text" name="photoURL"/>
+<div id="authorCreationDiv" class="create__info">
+    <ul>
+        <p>Enter author information:</p>
+        <li><input type="text" name="firstName" placeholder="Author name"/></li>
+        <li><input type="text" name="lastName" placeholder="Author surname"/></li>
+        <li><input type="text" name="nickName" placeholder="Nickname"/></li>
+        <li><textarea class="create__text" type="text" name="authorDescription" placeholder="Short description"></textarea></li>
+        <li><input placeholder="Photo url" type="text" name="photoURL"/></li>
+    </ul>
 </div>

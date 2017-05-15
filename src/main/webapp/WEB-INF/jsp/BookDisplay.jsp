@@ -8,40 +8,52 @@
 --%>
 <%@include file="includes/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<body>
-    <div>
-        <h3>${item.name}</h3>
-        <p>${item.description}</p>
-        <p>${item.imageUrl}</p>
-        <p><a href="/book/author/${item.author.id}">Псмотреть другие книги этого автора.</a></p>
-    </div>
-    <div>
-        <h3>Author info:</h3>
-        <p>${item.author.firstName}</p>
-        <p>${item.author.nickName}</p>
-        <p>${item.author.lastName}</p>
-    </div>
-    <sec:authorize access="isAuthenticated()">
-        <c:if test="${!hasBought}">
-            <c:choose>
+<content>
+    <div class="content">
+
+        <div class="open__book">
+            <div class="open__img">
+                <img src="${item.imageURL}" alt="${item.name}">
+            </div>
+            <div class="open__inf">
+                <ul class="open__list">
+                    <li><span class="book_info">${item.name}</span></li>
+                    <li><span class="book_info">Author: </span><p><a class="book_info" href="/author/${item.author.id}">${item.author.firstName} ${item.author.lastName}</a></p></li>
+                    <li><span class="book_info">Description: </span><p id="book_desc">${item.description}</p></li>
+                    <%--<li><span>Издательство: </span></li>--%>
+                    <%--<li><span>Год:</span></li>--%>
+                    <%--<li><span>Тематика:</span></li>--%>
+                    <%--<li><span>Страниц:</span></li>--%>
+                    <%--<li><span>Переплёт:</span></li>--%>
+                    <%--<li><span>Переводчик:</span></li>--%>
+                </ul>
+            </div>
+            <div class="open__buttons2">
+                <sec:authorize access="isAuthenticated()">
+                <c:if test="${!hasBought}">
+                <c:choose>
                 <c:when test="${!hasWish}">
-                    <div>
-                        <a href="/book/wish/${item.id}">Добавить в список желаемых</a>
+                    <div class="table_cell">
+                        <a href="/book/wish/${item.id}"><button>Add to wish list.</button></a>
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <div>
-                        <p>In ur wish pool</p>
-                        <a href="/book/deleteWish/${item.id}">Удалить из списка желаемых</a>
+                    <div class="table_cell">
+                    <a href="/book/deleteWish/${item.id}"><button>Delete from wish list.</button></a>
                     </div>
                 </c:otherwise>
-            </c:choose>
-            <div>
-                <a href="/advert/book/${item.id}">Найти объявления с этой книгой</a>
+                </c:choose>
+                </c:if>
+                </sec:authorize>
+                <div class="table_cell">
+                <a href="/advert/book/${item.id}"><button>Look for ads with this book.</button></a>
+                </div>
             </div>
-        </c:if>
+        </div>
 
-    </sec:authorize>
+
+    </div>
+</content>
+
 <%@include file="includes/commentSection.jsp"%>
-</body>
-</html>
+<%@include file="includes/footer.jsp"%>

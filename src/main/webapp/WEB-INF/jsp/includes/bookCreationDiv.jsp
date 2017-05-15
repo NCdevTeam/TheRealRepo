@@ -8,20 +8,19 @@
 --%>
 <link href="/resources/bookCreationDiv.css" rel="stylesheet"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div id="bookCreationDiv">
-    <p>Автор: </p><select name="authorId" id="selectAuthor">
-        <option value="0" selected="selected">Выберите автора из списка:</option>
-        <c:forEach items="${authorList}" var="author">
-            <option value="${author.id}">${author.firstName} ${author.lastName}</option>
-        </c:forEach>
-    </select>
-    <p>Требуется новый автор:</p>
-    <input type="checkbox" name="requireNewAuthor" value="${requireNewAuthor}" id="requireNewAuthorBox"/>
-    <%@include file="authorCreationDiv.jsp"%>
-    <p>Имя книги</p>
-    <input type="text" name="name"/>
-    <p>Описание книги</p>
-    <input type="text" name="description"/>
-    <p>Адрес обложки</p>
-    <input type="text" name="imageURL"/>
+<div id="bookCreationDiv" class="create__info">
+    <ul>
+        <p>Author: </p><select name="authorId" id="selectAuthor">
+            <option value="0" selected="selected">Select author:</option>
+            <c:forEach items="${authorList}" var="author">
+                <option value="${author.id}">${author.firstName} ${author.lastName}</option>
+            </c:forEach>
+        </select>
+
+        <li><p>Require new author:</p></li>
+        <li><input type="checkbox" name="requireNewAuthor" value="${requireNewAuthor}" id="requireNewAuthorBox"/></li>
+        <li><input placeholder="Book name" type="text" name="name"/></li>
+        <li><textarea class="create__text" placeholder="Book description" name="description"></textarea></li>
+        <li><input placeholder="Cover url" type="text" name="imageURL"/></li>
+    </ul>
 </div>

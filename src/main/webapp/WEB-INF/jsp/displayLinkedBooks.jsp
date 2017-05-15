@@ -7,23 +7,38 @@
 --%>
 <%@include file="includes/header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<body>
-<div>
-    <table>
-        <c:forEach items="${item}" var="link">
-            <tr>
-                <td><a href="/book/${link.book.id}">${link.book.name}</a></td>
-                <td><a href="/book/author/${link.book.author.id}">${link.book.author.nickName}</a></td>
-                <c:if test="${link.type == 'wish'}">
-                    <td><a href="/book/deleteWish/${link.book.id}">Удалить из пожеланий</a></td>
-                    <td><a href="http://google.com">Найти книгу</a></td>
-                </c:if>
-                <c:if test="${link.type == 'pool'}">
-                    <td><a href="http://avito.ru">Создать объявление на основе этой книги!</a></td>
-                </c:if>
-            </tr>
-        </c:forEach>
-    </table>
-</div>
-</body>
-</html>
+<c:if test="${item.size() != 0}">
+    <c:if test="${item.get(0).type == 'wish'}">
+        <h1>Let's look what's in your wishlist.</h1>
+    </c:if>
+    <c:if test="${item.get(0).type == 'pool'}">
+        <h1>That's all your books in system.</h1>
+        <h3>Haven't find book in our system? <a href="#">Add it now!</a></h3>
+    </c:if>
+</c:if>
+<c:if test="${item.size() == 0}">
+    <h1>Your list is empty.. add something!</h1>
+    <h3>Haven't find book in our system? <a href="#">Add it now!</a></h3>
+</c:if>
+<content>
+    <div class="content">
+        <div class="bibli__block">
+            <ul class="bibl__list">
+                <c:forEach items="${item}" var="link">
+                    <li>
+                        <div class="box__book">
+                            <div class="bibl__img">
+                                <img src="${link.book.imageURL}" alt="${link.book.name}">
+                            </div>
+                            <div class="bibl__name"><p>${link.book.name}</p></div>
+                            <div class="bibl__author">${link.book.author.firstName} ${link.book.author.lastName}</div>
+                            <a href="/book/${link.book.id}"><button class="bibl__but">Подробнее</button></a>
+                        </div>
+                    </li>
+                </c:forEach>
+            </ul>
+
+        </div>
+    </div>
+</content>
+<%@include file="includes/footer.jsp"%>

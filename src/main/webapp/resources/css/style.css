@@ -618,41 +618,6 @@ h1{
 
 /*===============================================================================================================================css for CreateNote=====================================================//*/
 
-.create__note__block{
-    width: 900px;
-    height: 450px;;
-    background-color: aqua;
-    margin: 0 auto;
-}
-
-
-.create__note  li{
-    list-style-type: none;  
-    margin-bottom: 5px;
-
-}
-
-.create__note  li input{
-    width: 400px;
-    height: 30px;
-    margin-right: 500px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////css for OpenNote///////////////////*/
 
 .book__img{
@@ -725,7 +690,7 @@ h1{
 }
 
 .open__buttons{
-    width: 350;
+    width: 350px;
     height: 55px;
     
 }
@@ -774,4 +739,430 @@ a{
     text-decoration: none;
     color: #9b9494;
     font-size: large;
+}
+
+
+.open__book{
+    width: 100%;
+    height: 400px;
+    text-align: left;
+    color: #868383;
+}
+
+.open__img{
+    width: 300px;
+    height: 300px;
+    float: left;
+    border: 1px solid black;
+}
+.open__inf{
+    width: 890px;
+    height: 300px;
+    float: right;
+    text-align: left;
+    box-shadow: 1px 1px 10px black;
+}
+
+.open__list > li{
+    margin-top: 15px;
+    margin-left: 10px;
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+.open__buttons2{
+    width: 300px;
+    height: 50px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+    display:table;
+}
+
+
+.open__buttons2 button{
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+    border: 3px;
+    color: #868383;
+    outline: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.open__buttons2 button:hover{
+    opacity: 0.5;
+}
+
+.table_cell{
+    display:table-cell;
+    padding-right: 20px;
+}
+
+.book_info {
+    color: rgba(0,0,0,0.58);
+    font-size: 19px;
+}
+
+#book_desc {
+    color: #332f2f;
+    font-size: 17px;
+}
+
+.bibli__block{
+    width: 1200px;
+    height: 800px;
+    text-align: left;
+}
+
+.bibl__list > li{
+    list-style-type: none;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.box__book{
+    width: 200px;
+    height: 350px;
+    box-shadow: 1px 2px 10px #868383;
+}
+
+
+.bibl__img{
+    width: 100%;
+    height: 200px;
+}
+
+.bibl__name{
+    width: 100%;
+    height: 50px;
+    background-color: #868383;
+    text-align: center;
+    font-style: italic;
+    font-size:large;
+}
+
+.bibl__author{
+    width: 100%;
+    height: 50px;
+    background-color: #868383;
+    text-align: center;
+    font-size:large;
+}
+
+.bibl__name>p{
+    padding-top:12px;
+}
+
+.bibl__but{
+    width: 100%;
+    height: 50px;
+    border: 3px;
+    color: #868383;
+    outline: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+.bibl__but:hover{
+    opacity: 0.5;
+}
+
+#index_head{
+    margin-bottom:40px;
+}
+
+.create__note__block{
+    width: 700px;
+    height: 450px;
+    margin: 0 auto;
+
+}
+
+.create__img_block{
+    width: 210px;
+    height: 390px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 8px;
+}
+.create__img{
+    width: 200px;
+    height: 200px;
+    clear:right;
+    border: 0.5px solid black;
+}
+
+.create__button{
+    float: left;
+    width: 203px;
+    height: 40px;
+    border: 3px;
+    color: #868383;
+    outline: none;
+}
+
+.create__button:hover{
+    opacity: 0.5;
+}
+
+.create__info{
+    width: 480px;
+    height:400px;
+    float: left;
+
+
+}
+
+.create__info ul{
+    margin-top: 10px;
+}
+.create__info ul > li{
+    list-style-type: none;
+    margin-bottom: 5px;
+    float: left;
+    margin-left: 10px;
+}
+
+
+.create__info ul > li > input{
+    width: 450px;
+    height: 20px;
+    outline: none;
+    padding: 3px;
+    border: none;
+    background-color: #f5f5f5;
+    box-shadow: 1px 1px 10px black;
+
+}
+
+.create__info ul > li > .create__text{
+    width: 450px;
+    height: 150px;
+}
+
+textarea{
+    resize: none;
+    padding: 3px;
+    outline: none;
+    background-color: #f5f5f5;
+    box-shadow: 1px 1px 10px black;
+}
+select{
+    margin-right: 600px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.create__box__bottons{
+    width: 203px;
+    height: 40px;
+    border: 3px;
+    color: #868383;
+    outline: none;
+    margin-top: 64px;
+}
+
+.create__box__bottons:hover{
+    opacity: 0.5;
+}
+
+.open__img img{
+    width:inherit;
+    height:inherit;
+}
+
+.bibl__img img{
+    width:inherit;
+    height:inherit;
+}
+
+.inf__author__img{
+    width: 400px;
+    height: 400px;
+    background-color: brown;
+    float: left;
+
+}
+
+.list__author__inf{
+    width: 400px;
+    height: 400px;
+    float: left;
+    margin-left: 10px;
+    text-align: left;
+    padding: 2px;
+    box-shadow: 1px 1px 10px black;
+
+}
+.list__author__books{
+    width: 200px;
+    height: 400px;
+    float: left;
+    margin-left: 10px;
+}
+
+.author__inf__list li{
+    list-style-type: none;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    color: #868383;
+}
+.author__inf__list li span{
+    color: black;
+}
+.list__author__books h2{
+    color: #868383;
+}
+
+.list__author__books ul li{
+    list-style-type: none;
+    margin-top: 10px;
+
+}
+
+.list__author__books ul li a{
+    font-size: 15px;
+}
+
+
+.author__list{
+    width: 1000px;
+    height: 400px;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.author__list h2{
+    color: #868383;
+}
+
+.block__authors{
+    width: 200px;
+    height: 290px;
+    margin-top: 20px;
+    box-shadow: 1px 2px 10px black;
+    display:inline-block;
+}
+
+.authors__img{
+    width: 100%;
+    height: 200px;
+
+}
+
+.authors__name{
+    text-align: center;
+    font-style: italic;
+    font-size: 25px;
+    color: #868383;
+}
+.block__authors button{
+    width: 100%;
+    height: 60px;
+    border: 3px;
+    color: #868383;
+    outline: none;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 2px;
+    display:table-cell;
+}
+.block__authors button:hover{
+    opacity: 0.5;
+}
+
+.authors__img img{
+    width:inherit;
+    height: inherit;
+}
+
+.inf__author__img img{
+    width:inherit;
+    height: inherit;
+}
+
+
+
+/*=================================== block comments  ===========*/
+
+.block__com{
+    width: 1200px;
+    height: 200px;
+    margin-top: 40px;
+    display:inline-block;
+}
+
+.block__com h3{
+    text-align: left;
+    color: #868383;
+}
+
+.block__com__av{
+    float: left;
+    margin-top: 10px;
+    width: 80px;
+    height: 80px;
+    background-color: brown;
+}
+
+.block__com textarea{
+    width: 500px;
+    height: 100px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.block__com button{
+    float: left;
+    margin-top: 125px;
+    margin-left: -100px;
+    border: 3px;
+    color: #868383;
+    outline: none;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100px;
+    height: 30px;
+}
+
+.block__com button:hover{
+    opacity: 0.5;
+}
+
+/*=========================================*/
+.read__com{
+    width: 1200px;
+    height: 180px;
+    display:inline-grid;
+}
+
+.block__com__name{
+    width: 100px;
+    height: 20px;
+
+    float: left;
+    margin-top: 10px;
+}
+
+.com__ndt{
+    float: left;
+    margin-top: 10px;
+    color: #868383;
+    margin-left: 10px;
+}
+.com__ndt li{
+    display: inline-block;
+
+}
+
+.block__com__read{
+    width: 515px;
+    height: 150px;
+    float: left;
+    margin-top: 30px;
+    margin-left: -170px;
+    text-align: left;
 }

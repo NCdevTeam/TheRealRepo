@@ -44,7 +44,7 @@ public class BooksController {
         Author author = authorService.getAuthorById(id);
         map.addAttribute("tempBook",bookService.getBooksByAuthor(author));
         map.addAttribute("title","Книги автора");
-        map.addAttribute("pageHeader","Книги за авторством: " + author.getNickName());
+        map.addAttribute("pageHeader","Книги за авторством: " + author.getFirstName() + author.getLastName());
         return new ModelAndView("BooksDisplay");
     }
 

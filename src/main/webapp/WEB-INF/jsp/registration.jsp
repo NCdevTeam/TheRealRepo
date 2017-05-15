@@ -25,7 +25,7 @@
                 <img src="/resources/img/bg.png" alt="bookvita" width="100px" height="100px">
             </div>
         </div>
-        <div class="name__reg"> РЕГИСТРАЦИЯ АККАУНТА BOOKVITA</div>
+        <div class="name__reg"> Registration. BOOKVITA. </div>
     </header>
 
     <content class="content">
@@ -33,13 +33,13 @@
         <div>
             <form:form class="rega__list" method="post" action="/registration" modelAttribute="newUser">
                 <ul>
-                    <li><input type="text" placeholder="Введите логин" name="username"></li>
-                    <li><input type="password" placeholder="Введите пароль" name="password"></li>
-                    <li><input type="password" placeholder="Повторите пароль"></li>
-                    <li><input type="email" placeholder="Введите e-m@il" name="email"></li>
-                    <li><input type="number" placeholder="Введите номер телефона" name="phoneNumber"></li>
-                    <li class="check__box"><input type="checkbox"><span class="check__box__span">Согласен с обратобкой персональных данных</span></li>
-                    <li><button type="submit" class="rega__list__button">ЗАРЕГЕСТРИРОВАТЬ</button></li>
+                    <li><input type="text" placeholder="Login" name="username"></li>
+                    <li><input type="password" placeholder="Password" name="password"></li>
+                    <li><input type="password" placeholder="Re-password"></li>
+                    <li><input type="email" placeholder="e-m@il" name="email"></li>
+                    <li><input type="number" placeholder="Phone number" name="phoneNumber"></li>
+                    <li class="check__box"><input type="checkbox"><span class="check__box__span">I agree with the processing of personal data</span></li>
+                    <li><button type="submit" class="rega__list__button">Submit</button></li>
                 </ul>
             </form:form>
         </div>
