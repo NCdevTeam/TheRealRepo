@@ -23,7 +23,7 @@
                     </ul>
                 </div>
                 <div class="my__block__buttons">
-                    <a href="/book/${book.id}"><button class="button__read">Больше.</button></a>
+                    <a href="/book/${book.id}"><button class="button__read">Details</button></a>
                 </div>
             </div>
         </c:forEach>

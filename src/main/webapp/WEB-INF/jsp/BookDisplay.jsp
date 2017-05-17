@@ -51,9 +51,9 @@
             </div>
         </div>
 
+        <%@include file="includes/commentSection.jsp"%>
 
     </div>
 </content>
 
-<%@include file="includes/commentSection.jsp"%>
 <%@include file="includes/footer.jsp"%>

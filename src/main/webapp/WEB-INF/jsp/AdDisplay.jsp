@@ -30,7 +30,7 @@
             </ul>
             <div class="open__buttons">
                 <a href="/advert"><button class="open__but1">Back</button></a>
-                <a href="/advert/buy/${item.id}"><button class="open__but2">Купить</button></a>
+                <a href="/advert/buy/${item.id}"><button class="open__but2">Buy</button></a>
             </div>
         </div>
 
@@ -42,13 +42,15 @@
             <div class="open__price">
                 <p>Book price:</p>
                 <div class="open__price2">
-                    <span>${item.price}p</span>
+                    <span>${item.price}$</span>
                 </div>
             </div>
         </div>
+
+        <%@include file="includes/commentSection.jsp"%>
     </div>
 
 </content>
 
-<%@include file="includes/commentSection.jsp"%>
+
 <%@include file="includes/footer.jsp"%>

@@ -29,7 +29,7 @@
             </div>
         </c:if>
         <p>
-            <label for="username">Имя пользователя</label>
+            <label for="username">User name</label>
             <input type="text" id="username" name="username" />
         </p>
         <p>
@@ -37,7 +37,7 @@
             <input type="password" id="password" name="password"/>
         </p>
         <p>
-            <label for="remember-me">Запомнить меня?</label>
+            <label for="remember-me">Remember me?</label>
             <input type="checkbox" id="remember-me" name="remember-me"/>
         </p>
         <div>

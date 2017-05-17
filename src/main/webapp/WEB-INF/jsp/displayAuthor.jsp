@@ -32,9 +32,10 @@
                 <li><a href="/book/author/${item.id}">Show author books</a></li>
             </ul>
         </div>
+
+        <%@include file="includes/commentSection.jsp"%>
     </div>
 
 </content>
 
-<%@include file="includes/commentSection.jsp"%>
 <%@include file="includes/footer.jsp"%>
